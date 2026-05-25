@@ -1,0 +1,408 @@
+import { useState, useEffect } from "react";
+
+const CTA_URL = "https://pay.kiwify.com.br/aiCHfnZ";
+
+const useExternalScripts = () => {
+  useEffect(() => {
+    // Meta Pixel
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    window.fbq('init','1012902778108285');
+    window.fbq('track','PageView');
+    // Supermago
+    const sm = document.createElement('script');
+    sm.src = 'https://supermago.b-cdn.net/supermago.js?ver=20250224';
+    sm.defer = true;
+    document.head.appendChild(sm);
+    return () => { document.head.removeChild(sm); };
+  }, []);
+};
+
+const CountdownTimer = () => {
+  const [time, setTime] = useState({ h: 2, m: 47, s: 33 });
+  useEffect(() => {
+    const iv = setInterval(() => {
+      setTime(p => {
+        let { h, m, s } = p;
+        s--;
+        if (s < 0) { s = 59; m--; }
+        if (m < 0) { m = 59; h--; }
+        if (h < 0) return { h: 0, m: 0, s: 0 };
+        return { h, m, s };
+      });
+    }, 1000);
+    return () => clearInterval(iv);
+  }, []);
+  const pad = n => String(n).padStart(2, "0");
+  return (
+    <div className="countdown">
+      {[["h", "Horas"], ["m", "Min"], ["s", "Seg"]].map(([k, l]) => (
+        <div key={k} style={{ textAlign: "center" }}>
+          <div className="countdown-box">{pad(time[k])}</div>
+          <div style={{ fontSize: 10, color: "rgba(255,255,255,0.8)", marginTop: 3, fontWeight: 600 }}>{l}</div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+const Stars = () => <span style={{ color: "#f59e0b", letterSpacing: 2 }}>★★★★★</span>;
+
+const problems = [
+  { icon: "😩", title: "Ele come o próprio cocô (e depois vem te lamber)", text: "Nojento, constrangedor e você morre de vergonha quando alguém vê. Já tentou de tudo e nada funciona — mas o problema tem solução em menos de 2 semanas." },
+  { icon: "💸", title: "Já gastei mais de R$ 500 em adestrador e continua a mesma bagunça", text: "Sessões que não funcionam, adestrador que trata todos os cachorros igual, e você com a sensação de ter jogado dinheiro fora. Shih Tzu precisa de técnicas específicas." },
+  { icon: "🚽", title: "Chego em casa e sempre tem xixi (ou cocô) onde não deveria", text: "Sala, quarto, tapete novo... você limpou ontem e hoje tem de novo. A frustração de não conseguir ensinar algo tão básico é de enlouquecer." },
+  { icon: "🍖", title: "Vive rejeitando ração ou comendo coisas que fazem mal", text: "Você não sabe se pode dar aquele pedacinho de frango, se pode misturar frutas, ou por que diabos ele rejeita a ração caríssima que você comprou. E fica naquela: será que vai fazer mal?" },
+  { icon: "🏥", title: "Infecção de ouvido, problema de pele, olho irritado... veterinário TODO mês", text: "Você já perdeu a conta de quanto gastou em consulta que poderia ter sido evitada. Shih Tzu tem problemas de saúde específicos — e ninguém te ensinou a prevenir." },
+  { icon: "✂️", title: "Tosa toda semana ou pelo virando feltro em casa", text: "R$ 80, R$ 100 toda semana no pet shop — ou você tentando cortar em casa e o resultado é uma catástrofe. E ainda tem nó, pelo embaraçado, cachorro estressado." },
+];
+
+const modules = [
+  { icon: "🎓", title: "Adestramento Definitivo", desc: "Ensine sentar, deitar, dar a pata e muito mais — sem gastar com adestrador." },
+  { icon: "🎯", title: "Necessidades no Lugar Certo", desc: "Mesmo que seja adulto, aprenda a ensinar de vez onde fazer xixi e cocô." },
+  { icon: "🚫", title: "Coprofagia — Como Resolver", desc: "Entenda a causa e elimine esse comportamento de uma vez por todas." },
+  { icon: "💊", title: "Saúde e Doenças da Raça", desc: "Conheça as doenças mais comuns e como preveni-las antes que virem problema." },
+  { icon: "✨", title: "Higiene e Beleza", desc: "Cuide do pelo, dentes, ouvidos e unhas com as técnicas corretas para a raça." },
+  { icon: "🧠", title: "Curiosidades da Raça", desc: "Entenda a personalidade do seu Shih Tzu e por que ele se comporta do jeito que se comporta." },
+  { icon: "🤝", title: "Socialização", desc: "Como apresentar seu pet a outros animais e pessoas sem traumas ou agressividade." },
+  { icon: "🩹", title: "Primeiros Socorros", desc: "O que fazer nas emergências mais comuns antes de chegar ao veterinário." },
+];
+
+const bonuses = [
+  { tag: "Bônus #1", emoji: "🥦", title: "Alimentação Saudável", desc: "O guia completo de nutrição: o que pode comer, o que é proibido, porções ideais e como montar uma dieta saudável que aumenta a longevidade.", val: "29,90" },
+  { tag: "Bônus #2", emoji: "✂️", title: "Guia de Tipos de Tosa", desc: "Descubra os estilos de tosa mais lindos para Shih Tzu, com fotos e instruções para orientar o pet shop — ou fazer você mesmo em casa.", val: "29,90" },
+  { tag: "Bônus #3", emoji: "💉", title: "Calendário de Vacinação", desc: "Planilha completa com todas as vacinas, vermífugos e exames recomendados por idade — para nunca mais perder um prazo importante.", val: "14,90" },
+];
+
+const testimonials = [
+  { text: "Eu já estava desesperada com a Mel comendo cocô todo santo dia. Tentei de tudo: ração cara, petisco, bronca… nada funcionava. Apliquei o que o manual ensina e em 10 dias o comportamento simplesmente parou. Parece milagre, mas é técnica certa pra raça!", name: "José Antônio", loc: "Campinas - SP" },
+  { text: "Meu Thor fazia xixi no sofá, na cama, no tapete — em todo lugar menos no tapete higiênico. Já tinha gastado quase R$ 600 com adestrador e nada. Com o manual resolvi sozinha em casa, sem estresse. Hoje ele vai certinho no lugar e ainda aprendeu a dar a pata!", name: "Jéssica Siqueira", loc: "Goiânia - GO" },
+  { text: "Trouxe minha Pipoca filhote pra casa e não sabia absolutamente nada sobre Shih Tzu. O manual me salvou! Aprendi sobre alimentação, vacinas, banho, tosa… tudo explicado de um jeito simples. Hoje ela tá saudável, linda e super obediente com 5 meses.", name: "Rafael Moreira", loc: "Salvador - BA" },
+  { text: "O que mais me surpreendeu foi o bônus de alimentação. Descobri que dava vários alimentos proibidos pra raça sem saber! Depois que ajustei a dieta do Simba, ele parou de vomitar, o pelo ficou sedoso e a energia voltou. Por R$ 10 foi o melhor investimento que fiz pro meu pet.", name: "Amanda Ferreira", loc: "Brasília - DF" }
+];
+
+const faqs = [
+  { q: "Funciona para Shih Tzu adulto?", a: "Sim! O manual foi desenvolvido para funcionar com Shih Tzus de qualquer idade. As técnicas são adaptadas para filhotes e adultos. Nunca é tarde para transformar o comportamento do seu pet." },
+  { q: "Como vou receber o manual?", a: "Você recebe no e-mail que informar na compra. Para Pix e cartão de crédito, o acesso é imediato — em até 10 minutos. Para boleto bancário, em até 1 dia útil após a confirmação do pagamento." },
+  { q: "Posso acessar no celular?", a: "Sim! O material é um E-book (PDF) que funciona em qualquer dispositivo — celular, tablet ou computador. Você também pode imprimir se preferir." },
+  { q: "Quais formas de pagamento são aceitas?", a: "Você pode pagar via Pix (acesso imediato), cartão de crédito ou boleto bancário. Escolha o que for mais conveniente para você." },
+  { q: "O pagamento é seguro?", a: "Sim. Utilizamos a plataforma Kiwify, líder em produtos digitais no Brasil, com criptografia total dos dados. Sua compra é 100% segura." },
+  { q: "Posso pedir reembolso se não gostar?", a: "Sim! Você tem 7 dias de garantia total. Se por qualquer motivo não ficar satisfeito, basta enviar um e-mail e devolvemos 100% do valor pago, sem perguntas." },
+  { q: "Funciona para quem nunca teve Shih Tzu?", a: "Com certeza! O material foi escrito para ser simples e direto, mesmo para quem está trazendo um Shih Tzu para casa pela primeira vez." },
+];
+
+const Tag = ({ children, dark }) => (
+  <span className={`tag ${dark ? "tag-dark" : ""}`}>{children}</span>
+);
+
+export default function LP() {
+  const [openFaq, setOpenFaq] = useState(null);
+
+  return (
+    <div className="lp">
+      <style>{`
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        .lp { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: #1f2937; line-height: 1.6; overflow-x: hidden; background: #fff; }
+        .sec { max-width: 880px; margin: 0 auto; padding: 0 16px; }
+        .tag { display: inline-block; background: linear-gradient(135deg, #fef3c7, #fde68a); color: #92400e; font-size: 11px; font-weight: 700; padding: 4px 14px; border-radius: 20px; letter-spacing: 1px; text-transform: uppercase; }
+        .tag-dark { background: rgba(255,255,255,0.15); color: #fde68a; }
+        .countdown { display: flex; gap: 10px; justify-content: center; }
+        .countdown-box { background: rgba(255,255,255,0.15); backdrop-filter: blur(8px); color: #fff; font-weight: 800; font-size: 22px; border-radius: 10px; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; font-family: monospace; border: 1px solid rgba(255,255,255,0.2); }
+        .cta-btn { display: inline-block; background: linear-gradient(135deg, #16a34a, #0d9488); color: #fff; font-weight: 800; font-size: 16px; padding: 16px 32px; border-radius: 14px; text-decoration: none; text-align: center; box-shadow: 0 6px 24px rgba(16,185,129,0.35); cursor: pointer; letter-spacing: 0.3px; width: auto; }
+        .cta-btn-full { width: 100%; }
+        .grid-problems { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
+        .grid-modules { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+        .grid-testimonials { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+        .bonus-card { background: #fff; border-radius: 16px; padding: 20px; box-shadow: 0 2px 16px rgba(0,0,0,0.06); display: flex; gap: 14px; align-items: center; border: 1px solid #fde68a; position: relative; overflow: hidden; }
+        .bonus-emoji { font-size: 32px; flex-shrink: 0; }
+        .faq-btn { width: 100%; background: #fff; border: 1px solid #e5e7eb; padding: 14px 16px; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 600; color: #1f2937; }
+        .faq-btn-open { border-color: #fbbf24; border-radius: 14px 14px 0 0; }
+        .faq-btn-closed { border-radius: 14px; }
+        .faq-answer { background: #fffbeb; border: 1px solid #fbbf24; border-top: none; border-radius: 0 0 14px 14px; padding: 14px 16px; font-size: 13px; color: #57534e; line-height: 1.7; }
+        .hero-title { font-size: 28px; font-weight: 900; line-height: 1.25; color: #1c1917; margin-bottom: 16px; }
+        .hero-gradient { background: linear-gradient(135deg, #16a34a, #0d9488); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .section-title { font-size: 26px; font-weight: 800; text-align: center; margin-bottom: 6px; }
+        .section-sub { color: #6b7280; font-size: 14px; text-align: center; max-width: 520px; margin: 0 auto; }
+        .seals { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+        .seal { font-size: 11px; color: #78716c; font-weight: 500; white-space: nowrap; }
+        .stats { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+        .stat-num { font-size: 32px; font-weight: 900; background: linear-gradient(135deg, #fbbf24, #f59e0b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .stat-label { font-size: 11px; color: #a8a29e; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .price-box { background: #fff; border-radius: 24px; padding: 32px 24px; max-width: 440px; width: 100%; box-shadow: 0 12px 48px rgba(0,0,0,0.1); border: 3px solid #16a34a; text-align: center; margin: 0 auto; }
+        .price-big { font-size: 48px; font-weight: 900; color: #16a34a; line-height: 1.1; }
+        .price-cents { font-size: 18px; }
+        .avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #fbbf24, #f59e0b); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; font-size: 14px; flex-shrink: 0; }
+        .problem-card { background: #fff; border-radius: 14px; padding: 18px 16px; box-shadow: 0 1px 8px rgba(0,0,0,0.05); display: flex; gap: 12px; align-items: flex-start; border-bottom: 3px solid #fbbf24; }
+        .problem-icon { font-size: 26px; flex-shrink: 0; line-height: 1; }
+        .module-card { background: linear-gradient(135deg, #fefce8, #fff7ed); border-radius: 14px; padding: 16px 14px; text-align: center; border: 1px solid #fde68a; }
+        .testimonial-card { background: #fafaf9; border-radius: 14px; padding: 18px; border: 1px solid #e7e5e4; }
+        .include-item { display: flex; gap: 8px; align-items: center; font-size: 13px; color: #374151; padding: 4px 0; }
+        .include-check { color: #16a34a; font-weight: 700; font-size: 15px; }
+        @media (max-width: 600px) {
+          .hero-title { font-size: 22px; }
+          .section-title { font-size: 22px; }
+          .grid-problems { grid-template-columns: 1fr; }
+          .grid-modules { grid-template-columns: 1fr 1fr; }
+          .grid-testimonials { grid-template-columns: 1fr; }
+          .stats { gap: 24px; }
+          .stat-num { font-size: 28px; }
+          .price-big { font-size: 42px; }
+          .price-box { padding: 24px 16px; }
+          .cta-btn { font-size: 15px; padding: 14px 24px; }
+          .bonus-card { flex-direction: column; text-align: center; align-items: stretch; padding: 18px 16px; }
+          .bonus-emoji { font-size: 36px; }
+          .countdown-box { width: 44px; height: 44px; font-size: 20px; }
+          .seal { font-size: 10px; }
+          .faq-btn { font-size: 13px; padding: 12px 14px; }
+          .faq-answer { padding: 12px 14px; font-size: 12px; }
+        }
+      `}</style>
+
+      {/* TOP BAR */}
+      <div style={{ background: "linear-gradient(135deg, #dc2626, #b91c1c)", padding: "10px 12px", textAlign: "center", color: "#fff" }}>
+        <div style={{ fontSize: 11, fontWeight: 700, marginBottom: 8, letterSpacing: 1, textTransform: "uppercase" }}>🔥 Oferta especial encerrando em:</div>
+        <CountdownTimer />
+        <div style={{ fontSize: 11, marginTop: 6, opacity: 0.85 }}>✨ Mais de 5.200 tutores satisfeitos</div>
+      </div>
+
+      {/* HERO */}
+      <div style={{ background: "linear-gradient(180deg, #fefce8 0%, #fff 100%)", padding: "44px 16px 36px", textAlign: "center" }}>
+        <div style={{ maxWidth: 720, margin: "0 auto" }}>
+          <div style={{ fontSize: 48, marginBottom: 8 }}>🐶</div>
+          <h1 className="hero-title">
+            Seu Shih Tzu Faz Xixi Fora do Lugar, Come Cocô e Não Obedece?{" "}
+            <span className="hero-gradient">Resolva Tudo em Casa.</span>
+          </h1>
+          <p style={{ fontSize: 15, color: "#57534e", maxWidth: 600, margin: "0 auto 20px", lineHeight: 1.75 }}>
+            O Manual Completo do Shih Tzu reúne o passo a passo que adestrador não te conta — comportamento, alimentação, saúde e higiene da raça. Aplique hoje mesmo.
+          </p>
+          <a href="#problemas" style={{ color: "#78350f", fontSize: 13, textDecoration: "none", fontWeight: 600 }}>Primeiro quero entender melhor ↓</a>
+          <div className="seals" style={{ marginTop: 18 }}>
+            {[["🔒", "Pagamento seguro"], ["↩️", "7 dias de garantia"], ["📱", "Acesso imediato"], ["🌎", "+4 países"]].map(([ic, tx], i) => (
+              <span key={i} className="seal">{ic} {tx}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* PROBLEMAS */}
+      <div id="problemas" style={{ background: "#f8fafc", padding: "48px 0" }}>
+        <div className="sec">
+          <div style={{ textAlign: "center", marginBottom: 28 }}>
+            <Tag>Você se identifica?</Tag>
+            <h2 className="section-title" style={{ marginTop: 10 }}>Se você já passou por isso, sabe o sufoco que é...</h2>
+            <p className="section-sub">A maioria dos tutores tenta resolver sozinho — e só piora. Veja se algum desses problemas está acabando com a sua paciência:</p>
+          </div>
+          <div className="grid-problems">
+            {problems.map((p, i) => (
+              <div key={i} className="problem-card">
+                <div className="problem-icon">{p.icon}</div>
+                <div>
+                  <h3 style={{ fontSize: 14, fontWeight: 700, color: "#1c1917", margin: "0 0 4px" }}>{p.title}</h3>
+                  <p style={{ fontSize: 12, color: "#6b7280", margin: 0, lineHeight: 1.55 }}>{p.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* AUTORIDADE */}
+      <div style={{ background: "linear-gradient(135deg, #1c1917, #292524)", padding: "48px 0" }}>
+        <div className="sec" style={{ textAlign: "center" }}>
+          <Tag dark>Quem somos</Tag>
+          <h2 style={{ fontSize: 22, fontWeight: 800, color: "#fff", marginTop: 12, marginBottom: 6 }}>Shih Tzu Descomplicado</h2>
+          <p style={{ fontSize: 12, color: "#fbbf24", fontWeight: 600, marginBottom: 14 }}>O manual mais vendido do Brasil sobre a raça</p>
+          <p style={{ fontSize: 13, color: "#d6d3d1", maxWidth: 580, margin: "0 auto 10px", lineHeight: 1.75 }}>
+            Depois de acompanhar centenas de casos de Shih Tzus com problemas comportamentais, alimentares e de saúde, percebemos um padrão: a informação disponível na internet é genérica demais — ignora completamente as necessidades únicas dessa raça.
+          </p>
+          <p style={{ fontSize: 13, color: "#d6d3d1", maxWidth: 580, margin: "0 auto 28px", lineHeight: 1.75 }}>
+            Reunimos tudo que funciona de verdade: técnicas validadas por veterinários, testadas por tutores reais, e organizadas em linguagem simples e direta. Zero enrolação.
+          </p>
+          <div className="stats">
+            {[["5.200+", "Tutores satisfeitos"], ["#1", "Manual sobre Shih Tzu no Brasil"], ["4,9★", "Nota média"]].map(([n, l], i) => (
+              <div key={i}>
+                <div className="stat-num">{n}</div>
+                <div className="stat-label">{l}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* CONTEÚDO */}
+      <div style={{ padding: "48px 0", background: "#fff" }}>
+        <div className="sec">
+          <div style={{ textAlign: "center", marginBottom: 28 }}>
+            <Tag>O que você vai aprender</Tag>
+            <h2 className="section-title" style={{ marginTop: 10 }}>Tudo dentro do Manual Completo</h2>
+            <p className="section-sub">Conteúdo ilustrado, passo a passo — mesmo quem nunca teve Shih Tzu consegue aplicar.</p>
+          </div>
+          <div className="grid-modules">
+            {modules.map((m, i) => (
+              <div key={i} className="module-card">
+                <div style={{ fontSize: 28, marginBottom: 4 }}>{m.icon}</div>
+                <h3 style={{ fontSize: 13, fontWeight: 700, color: "#1c1917", margin: "0 0 4px" }}>{m.title}</h3>
+                <p style={{ fontSize: 11, color: "#78716c", margin: 0, lineHeight: 1.5 }}>{m.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* BÔNUS */}
+      <div style={{ background: "linear-gradient(180deg, #fffbeb, #fef9c3)", padding: "48px 0" }}>
+        <div className="sec">
+          <div style={{ textAlign: "center", marginBottom: 28 }}>
+            <Tag>Surpresas especiais</Tag>
+            <h2 className="section-title" style={{ marginTop: 10 }}>🎁 3 Bônus Exclusivos — 100% Grátis</h2>
+            <p className="section-sub">Você recebe todos esses materiais junto com o manual, sem custo adicional.</p>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 12, maxWidth: 640, margin: "0 auto" }}>
+            {bonuses.map((b, i) => (
+              <div key={i} className="bonus-card">
+                <div style={{ position: "absolute", top: 0, right: 0, background: "#16a34a", color: "#fff", fontSize: 10, fontWeight: 700, padding: "3px 12px", borderRadius: "0 0 0 12px" }}>GRÁTIS</div>
+                <div className="bonus-emoji">{b.emoji}</div>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4, flexWrap: "wrap" }}>
+                    <span style={{ background: "#fbbf24", color: "#78350f", fontSize: 10, fontWeight: 700, padding: "2px 8px", borderRadius: 6 }}>{b.tag}</span>
+                    <h3 style={{ fontSize: 15, fontWeight: 700, color: "#1c1917", margin: 0 }}>{b.title}</h3>
+                  </div>
+                  <p style={{ fontSize: 12, color: "#6b7280", margin: "0 0 6px", lineHeight: 1.5 }}>{b.desc}</p>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <span style={{ fontSize: 12, color: "#a8a29e", textDecoration: "line-through" }}>R$ {b.val}</span>
+                    <span style={{ fontSize: 14, fontWeight: 800, color: "#16a34a" }}>R$ 0,00</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div style={{ textAlign: "center", marginTop: 24 }}>
+            <div style={{ display: "inline-block", background: "#fff", borderRadius: 14, padding: "14px 20px", boxShadow: "0 2px 12px rgba(0,0,0,0.08)", border: "2px solid #16a34a", fontSize: 13 }}>
+              <span style={{ color: "#57534e" }}>Valor total dos bônus: </span>
+              <span style={{ color: "#a8a29e", textDecoration: "line-through" }}>R$ 74,70</span>
+              <span style={{ color: "#57534e" }}> — tudo por apenas </span>
+              <span style={{ fontSize: 22, fontWeight: 900, color: "#16a34a" }}>R$ 10</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* DEPOIMENTOS */}
+      <div style={{ background: "#fff", padding: "48px 0" }}>
+        <div className="sec">
+          <div style={{ textAlign: "center", marginBottom: 28 }}>
+            <Tag>Resultados reais</Tag>
+            <h2 className="section-title" style={{ marginTop: 10 }}>O que nossos clientes dizem</h2>
+            <p className="section-sub">Mais de 5.200 tutores já transformaram a vida dos seus Shih Tzus.</p>
+          </div>
+          <div className="grid-testimonials">
+            {testimonials.map((t, i) => (
+              <div key={i} className="testimonial-card">
+                <Stars />
+                <p style={{ fontSize: 13, color: "#44403c", lineHeight: 1.65, margin: "8px 0 14px", fontStyle: "italic" }}>"{t.text}"</p>
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <div className="avatar">{t.name[0]}</div>
+                  <div>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: "#1c1917" }}>{t.name}</div>
+                    <div style={{ fontSize: 11, color: "#a8a29e" }}>{t.loc}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* OFERTA */}
+      <div style={{ background: "linear-gradient(180deg, #f0fdf4, #dcfce7)", padding: "48px 0" }}>
+        <div className="sec" style={{ display: "flex", justifyContent: "center" }}>
+          <div className="price-box">
+            <Tag>Investimento</Tag>
+            <h2 style={{ fontSize: 20, fontWeight: 800, marginTop: 10, marginBottom: 4 }}>Garanta o seu agora</h2>
+            <p style={{ fontSize: 12, color: "#6b7280", marginBottom: 18 }}>Uma única vez, acesso para sempre.</p>
+            <div style={{ background: "linear-gradient(135deg, #f0fdf4, #ecfdf5)", borderRadius: 16, padding: "20px 16px", marginBottom: 18, border: "1px solid #bbf7d0" }}>
+              <div style={{ fontSize: 13, color: "#9ca3af", textDecoration: "line-through" }}>De R$ 130,00</div>
+              <div className="price-big">R$ 10<span className="price-cents">,00</span></div>
+              <div style={{ background: "#16a34a", color: "#fff", fontSize: 11, fontWeight: 700, padding: "4px 14px", borderRadius: 8, display: "inline-block", marginTop: 8 }}>✅ Você economiza R$ 120,00</div>
+            </div>
+            <div style={{ textAlign: "left", marginBottom: 20 }}>
+              {[
+                "Manual Completo do Shih Tzu (E-book)",
+                "Bônus #1 — Alimentação Saudável",
+                "Bônus #2 — Guia de Tipos de Tosa",
+                "Bônus #3 — Calendário de Vacinação",
+                "Acesso imediato por e-mail",
+                "Leia em qualquer dispositivo, para sempre",
+                "Garantia total de 7 dias"
+              ].map((item, i) => (
+                <div key={i} className="include-item">
+                  <span className="include-check">✓</span> {item}
+                </div>
+              ))}
+            </div>
+            <a href={CTA_URL} className="cta-btn cta-btn-full">🐾 QUERO O MANUAL AGORA</a>
+            <div className="seals" style={{ marginTop: 14 }}>
+              {[["🔒", "Pagamento seguro"], ["💳", "Pix · Boleto · Cartão"], ["↩️", "Garantia 7 dias"]].map(([ic, tx], i) => (
+                <span key={i} className="seal">{ic} {tx}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* GARANTIA */}
+      <div style={{ background: "#fff", padding: "48px 0" }}>
+        <div className="sec">
+          <div style={{ maxWidth: 540, margin: "0 auto", textAlign: "center", background: "linear-gradient(135deg, #fefce8, #fff7ed)", borderRadius: 20, padding: "32px 20px", border: "2px solid #fde68a" }}>
+            <div style={{ fontSize: 48, marginBottom: 10 }}>🛡️</div>
+            <h2 style={{ fontSize: 20, fontWeight: 800, color: "#92400e", marginBottom: 10 }}>Risco zero para você</h2>
+            <p style={{ fontSize: 13, color: "#57534e", lineHeight: 1.75, margin: 0 }}>
+              Se em até 7 dias após a compra você não estiver satisfeito com o material por qualquer motivo, basta enviar um e-mail e devolvemos 100% do seu dinheiro — sem perguntas, sem burocracia. Você não perde nada testando.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* FAQ */}
+      <div style={{ background: "#f8fafc", padding: "48px 0" }}>
+        <div className="sec">
+          <div style={{ textAlign: "center", marginBottom: 28 }}>
+            <Tag>Dúvidas?</Tag>
+            <h2 className="section-title" style={{ marginTop: 10 }}>Perguntas Frequentes</h2>
+          </div>
+          <div style={{ maxWidth: 620, margin: "0 auto" }}>
+            {faqs.map((f, i) => (
+              <div key={i} style={{ marginBottom: 6 }}>
+                <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className={`faq-btn ${openFaq === i ? "faq-btn-open" : "faq-btn-closed"}`}>
+                  {f.q}
+                  <span style={{ fontSize: 18, color: openFaq === i ? "#f59e0b" : "#d1d5db", transform: openFaq === i ? "rotate(45deg)" : "none", flexShrink: 0, marginLeft: 8, display: "inline-block", transition: "transform 0.2s" }}>+</span>
+                </button>
+                {openFaq === i && <div className="faq-answer">{f.a}</div>}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* FECHAMENTO */}
+      <div style={{ background: "linear-gradient(135deg, #16a34a, #0d9488)", textAlign: "center", padding: "48px 16px" }}>
+        <div style={{ maxWidth: 580, margin: "0 auto" }}>
+          <h2 style={{ fontSize: 24, fontWeight: 800, color: "#fff", lineHeight: 1.3, marginBottom: 12 }}>Seu Shih Tzu merece o melhor cuidador possível. E isso começa hoje.</h2>
+          <p style={{ fontSize: 13, color: "#d1fae5", marginBottom: 24, lineHeight: 1.7 }}>5.200+ tutores já transformaram a relação com seus pets. Por apenas R$ 10, você tem o guia completo para a vida toda.</p>
+          <a href={CTA_URL} className="cta-btn">🐾 SIM, QUERO O MANUAL AGORA — R$ 10</a>
+          <div className="seals" style={{ marginTop: 18 }}>
+            {["🔒 Pagamento seguro", "· 7 dias de garantia", "· Acesso imediato"].map((t, i) => (
+              <span key={i} style={{ color: "rgba(255,255,255,0.85)", fontSize: 12 }}>{t}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* RODAPÉ */}
+      <div style={{ background: "#0c0a09", textAlign: "center", padding: "16px 12px" }}>
+        <p style={{ color: "#57534e", fontSize: 11, margin: 0 }}>© 2026 Shih Tzu Descomplicado — Todos os direitos reservados</p>
+      </div>
+      <img height="1" width="1" style={{ display: "none" }} src="https://www.facebook.com/tr?id=1012902778108285&ev=PageView&noscript=1" alt="" />
+    </div>
+  );
+}
