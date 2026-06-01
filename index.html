@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Heróis do Propósito</title>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2469616796812726');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2469616796812726&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<script src="https://supermago.b-cdn.net/supermago.js?ver=20250224" defer></script>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --blue:#2EC4F3;--blue-d:#0ea5c9;
+  --yellow:#FFD93D;--orange:#FF6B35;--orange-d:#e85520;
+  --green:#6BCB77;--green-d:#3db84a;
+  --pink:#FF6FB4;--purple:#A855F7;--purple-d:#8b3fd4;
+  --red:#FF4757;--cream:#FFFBF0;--white:#fff;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito',sans-serif;background:var(--cream);overflow-x:hidden;color:#333}
+
+/* ── UTILS ── */
+.container{width:100%;max-width:900px;margin:0 auto;padding:0 20px}
+section{padding:60px 0}
+.text-center{text-align:center}
+.section-tag{display:inline-block;background:var(--yellow);color:#333;font-weight:900;font-size:.75rem;letter-spacing:2px;text-transform:uppercase;padding:6px 18px;border-radius:20px;margin-bottom:14px;border:2px solid #f0c800}
+h2.sec-title{font-family:'Fredoka One',cursive;font-size:clamp(1.6rem,4vw,2.6rem);color:#1a1a2e;line-height:1.2;margin-bottom:10px}
+.c-blue{color:var(--blue-d)}.c-orange{color:var(--orange-d)}.c-purple{color:var(--purple-d)}.c-green{color:var(--green-d)}.c-pink{color:var(--pink)}.c-yellow{color:var(--yellow)}
+.sec-sub{font-size:1rem;color:#555;line-height:1.8;font-weight:600;max-width:620px;margin:0 auto 32px}
+
+/* ── BUTTON ── */
+.btn{display:inline-block;font-family:'Fredoka One',cursive;font-size:1.15rem;padding:18px 44px;border-radius:60px;text-decoration:none;cursor:pointer;border:none;transition:all .2s;letter-spacing:.3px;text-align:center}
+.btn-green{background:linear-gradient(135deg,var(--green),var(--green-d));color:#fff;box-shadow:0 6px 0 #2a8534,0 10px 25px rgba(107,203,119,.4)}
+.btn-green:hover{transform:translateY(-3px);box-shadow:0 9px 0 #2a8534,0 16px 30px rgba(107,203,119,.4)}
+.btn-green:active{transform:translateY(3px);box-shadow:0 3px 0 #2a8534}
+
+/* ── FLOATING DECO ── */
+.float-el{position:absolute;animation:floatUD 3s ease-in-out infinite alternate;font-size:1.8rem;z-index:1;user-select:none;pointer-events:none}
+@keyframes floatUD{0%{transform:translateY(0) rotate(-5deg)}100%{transform:translateY(-14px) rotate(5deg)}}
+
+/* ══════════ HERO ══════════ */
+.hero{background:linear-gradient(160deg,#A0E9FF 0%,#C8F7C5 45%,#FFF3A3 100%);padding:60px 0 70px;position:relative;overflow:hidden;text-align:center}
+.hero-inner{position:relative;z-index:2}
+.badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border-radius:40px;padding:9px 22px;font-size:.82rem;font-weight:800;color:var(--purple-d);box-shadow:0 4px 14px rgba(168,85,247,.2);margin-bottom:24px;border:3px solid var(--purple)}
+.hero h1{font-family:'Fredoka One',cursive;font-size:clamp(1.8rem,5vw,3.4rem);line-height:1.2;margin-bottom:18px;color:#1a1a2e;max-width:760px;margin-left:auto;margin-right:auto}
+.hero-sub{font-size:1rem;line-height:1.8;color:#444;max-width:600px;margin:0 auto 32px;font-weight:600}
+.hero-sub b{color:var(--purple-d)}
+.secure-txt{font-size:.78rem;color:#555;margin-top:12px;font-weight:700}
+
+/* Hero product cards */
+.hero-cards{display:flex;justify-content:center;align-items:center;gap:14px;margin:28px auto;flex-wrap:wrap;max-width:560px}
+.hero-cards img{width:150px;height:auto;border-radius:16px;box-shadow:0 8px 26px rgba(0,0,0,.18);border:4px solid #fff;transition:transform .3s}
+.hero-cards img:hover{transform:translateY(-8px) rotate(-2deg) scale(1.04)}
+.hero-cards img:nth-child(2){transform:scale(1.08);z-index:2}
+.hero-cards img:nth-child(2):hover{transform:scale(1.13) translateY(-8px)}
+
+/* ══════════ PROBLEM ══════════ */
+.problem-sec{background:linear-gradient(160deg,#FFF8CC,#FFE8D0);text-align:center}
+.prob-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:28px}
+.prob-card{background:#fff;border-radius:20px;padding:22px 14px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.08);border:3px solid transparent;transition:.2s}
+.prob-card:hover{border-color:var(--orange);transform:scale(1.03)}
+.prob-card .ico{font-size:2.2rem;margin-bottom:8px}
+.prob-card p{font-size:.85rem;font-weight:700;color:#444;line-height:1.5}
+.prob-highlight{background:linear-gradient(135deg,var(--orange),#ffb347);border-radius:20px;padding:24px 28px;margin-top:24px;color:#fff;font-size:1rem;font-weight:800;line-height:1.7;box-shadow:0 6px 0 #c94a15}
+
+/* ══════════ HEROES ══════════ */
+.heroes-sec{background:linear-gradient(160deg,#EEF7FF,#F3E8FF);text-align:center}
+.heroes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin-top:32px}
+.hero-char{background:#fff;border-radius:24px;padding:24px 14px;text-align:center;box-shadow:0 6px 22px rgba(0,0,0,.09);cursor:pointer;transition:.3s;border:3px solid transparent}
+.hero-char:hover{transform:translateY(-7px)}
+.hero-char.c1:hover{border-color:var(--blue);box-shadow:0 12px 28px rgba(46,196,243,.25)}
+.hero-char.c2:hover{border-color:var(--green);box-shadow:0 12px 28px rgba(107,203,119,.25)}
+.hero-char.c3:hover{border-color:var(--yellow);box-shadow:0 12px 28px rgba(255,217,61,.35)}
+.hero-char.c4:hover{border-color:var(--pink);box-shadow:0 12px 28px rgba(255,111,180,.25)}
+.hero-char.c5:hover{border-color:var(--purple);box-shadow:0 12px 28px rgba(168,85,247,.25)}
+.char-avatar{font-size:2.8rem;margin-bottom:10px;display:block}
+.char-name{font-family:'Fredoka One',cursive;font-size:1.2rem;margin-bottom:6px}
+.c1 .char-name{color:var(--blue-d)}.c2 .char-name{color:var(--green-d)}.c3 .char-name{color:#c9a000}.c4 .char-name{color:var(--pink)}.c5 .char-name{color:var(--purple-d)}
+.char-tag{display:inline-block;border-radius:20px;padding:4px 13px;font-size:.72rem;font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.c1 .char-tag{background:var(--blue-d)}.c2 .char-tag{background:var(--green-d)}.c3 .char-tag{background:#f0c800;color:#333}.c4 .char-tag{background:var(--pink)}.c5 .char-tag{background:var(--purple-d)}
+.char-lesson{font-size:.8rem;font-weight:700;color:#555;line-height:1.5;margin-top:6px}
+
+/* ══════════ HOW ══════════ */
+.how-sec{background:#fff;text-align:center}
+.steps-col{display:flex;flex-direction:column;gap:14px;margin-top:32px;max-width:680px;margin-left:auto;margin-right:auto}
+.step{display:flex;align-items:center;gap:18px;background:#f6f8ff;border-radius:20px;padding:20px;border:3px solid #e4e9ff;transition:.2s;text-align:left}
+.step:hover{border-color:var(--blue);transform:translateX(5px)}
+.step-num{width:50px;height:50px;border-radius:50%;font-family:'Fredoka One',cursive;font-size:1.4rem;color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 0 rgba(0,0,0,.18)}
+.step:nth-child(1) .step-num{background:var(--blue);box-shadow:0 4px 0 #1a9ecb}
+.step:nth-child(2) .step-num{background:var(--green);box-shadow:0 4px 0 #3db84a}
+.step:nth-child(3) .step-num{background:var(--orange);box-shadow:0 4px 0 #c94a15}
+.step:nth-child(4) .step-num{background:var(--purple);box-shadow:0 4px 0 #7c3aed}
+.step:nth-child(5) .step-num{background:var(--pink);box-shadow:0 4px 0 #c9397d}
+.step-icon{font-size:1.8rem;flex-shrink:0}
+.step-body strong{font-size:.95rem;color:#1a1a2e;font-weight:800;display:block;margin-bottom:3px}
+.step-body p{font-size:.83rem;color:#666;line-height:1.6;font-weight:600}
+
+/* ══════════ TESTIMONIALS ══════════ */
+.testi-sec{background:linear-gradient(160deg,#FFF0F7,#F0FFFE);text-align:center}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:32px}
+.testi-card{background:#fff;border-radius:22px;padding:26px;box-shadow:0 6px 22px rgba(0,0,0,.08);text-align:left;transition:.2s}
+.testi-card:hover{transform:translateY(-4px)}
+.testi-card:nth-child(1){border-top:5px solid var(--blue)}
+.testi-card:nth-child(2){border-top:5px solid var(--pink)}
+.testi-card:nth-child(3){border-top:5px solid var(--green)}
+.testi-quote{font-size:2.6rem;line-height:1;color:var(--yellow);font-family:'Fredoka One',cursive;margin-bottom:6px}
+.testi-text{font-size:.88rem;color:#444;line-height:1.8;font-weight:600;font-style:italic;margin-bottom:14px}
+.testi-author{display:flex;align-items:center;gap:10px}
+.testi-avatar{width:40px;height:40px;border-radius:50%;font-size:1.3rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.testi-card:nth-child(1) .testi-avatar{background:#E8F9FF}
+.testi-card:nth-child(2) .testi-avatar{background:#FFF0F7}
+.testi-card:nth-child(3) .testi-avatar{background:#F0FFF4}
+.testi-name{font-weight:800;color:#1a1a2e;font-size:.85rem}
+.testi-city{font-size:.72rem;color:#888}
+
+/* ══════════ OFFER ══════════ */
+.offer-sec{background:linear-gradient(160deg,#F0FFF4,#E8F9FF);text-align:center}
+.offer-box{background:#fff;border-radius:28px;padding:36px;box-shadow:0 10px 36px rgba(0,0,0,.09);border:4px solid var(--green);max-width:740px;margin:28px auto 0;text-align:left}
+.offer-title{font-family:'Fredoka One',cursive;font-size:1.3rem;color:var(--green-d);margin-bottom:6px}
+.offer-desc{font-size:.9rem;color:#555;font-weight:600;line-height:1.7;margin-bottom:24px}
+.bonus-list{display:flex;flex-direction:column;gap:10px}
+.bonus-row{display:flex;justify-content:space-between;align-items:center;background:#f5fff7;border-radius:14px;padding:14px 18px;gap:10px;border:2px solid #d0f0d8;transition:.2s}
+.bonus-row:hover{border-color:var(--green);transform:scale(1.01)}
+.bl{display:flex;align-items:center;gap:12px}
+.b-em{font-size:1.3rem;flex-shrink:0}
+.b-name{font-weight:800;color:#1a1a2e;font-size:.85rem}
+.b-desc{font-size:.73rem;color:#888;font-weight:600}
+.br{text-align:right;flex-shrink:0;min-width:60px}
+.b-old{color:#f87171;text-decoration:line-through;font-size:.75rem;font-weight:700}
+.b-free{color:var(--green-d);font-weight:900;font-size:.82rem}
+
+.price-box{max-width:740px;margin:28px auto 0;background:linear-gradient(135deg,var(--purple),#7c3aed);border-radius:24px;padding:36px 28px;text-align:center;color:#fff;box-shadow:0 8px 0 #5b21b6,0 14px 30px rgba(168,85,247,.35)}
+.price-from{font-size:.88rem;opacity:.7;text-decoration:line-through;font-weight:700;margin-bottom:4px}
+.price-row{display:flex;align-items:flex-end;justify-content:center;gap:4px;margin-bottom:4px}
+.price-prefix{font-size:1.4rem;font-weight:900;opacity:.9;padding-bottom:10px}
+.price-main{font-family:'Fredoka One',cursive;font-size:clamp(3rem,10vw,5rem);line-height:1;color:#fff;text-shadow:0 3px 0 rgba(0,0,0,.2)}
+.price-suffix{font-size:1.8rem;opacity:.9;padding-bottom:10px}
+.price-desc{opacity:.8;font-size:.88rem;font-weight:700;margin-bottom:4px}
+.price-or{opacity:.5;margin:8px 0;font-weight:700}
+.price-inst{font-size:1rem;font-weight:800;opacity:.9;margin-bottom:22px}
+.price-inst strong{font-size:1.15rem}
+.price-secure{margin-top:14px;font-size:.76rem;opacity:.65;font-weight:700}
+
+/* ══════════ GUARANTEE ══════════ */
+.guarantee-sec{background:#fff;text-align:center}
+.seal{width:160px;height:160px;border-radius:50%;background:linear-gradient(135deg,var(--yellow),var(--orange));display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 24px;box-shadow:0 8px 0 #c94a15,0 14px 30px rgba(255,107,53,.25);animation:sealRock 2.5s ease-in-out infinite}
+@keyframes sealRock{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+.seal-num{font-family:'Fredoka One',cursive;font-size:3.2rem;color:#fff;line-height:1;text-shadow:0 3px 0 rgba(0,0,0,.15)}
+.seal-txt{font-size:.7rem;font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:2px}
+.guarantee-text{font-size:.97rem;font-weight:600;color:#555;line-height:1.9;max-width:520px;margin:0 auto}
+.guarantee-text strong{color:var(--green-d)}
+
+/* ══════════ URGENCY ══════════ */
+.urgency-sec{background:linear-gradient(135deg,var(--red),#ff8c00);text-align:center;color:#fff}
+.urgency-sec h2{color:#fff;margin-bottom:14px}
+.urgency-text{font-size:.97rem;font-weight:700;line-height:1.8;opacity:.95;max-width:560px;margin:0 auto}
+.urgency-text strong{color:var(--yellow)}
+
+/* ══════════ PS ══════════ */
+.ps-sec{background:linear-gradient(160deg,#FFF8CC,#FFE8D0);text-align:center;padding:60px 20px}
+.ps-box{max-width:640px;margin:0 auto;background:#fff;border-radius:24px;padding:36px;box-shadow:0 8px 28px rgba(0,0,0,.09);border:4px dashed var(--orange)}
+.ps-label{font-family:'Fredoka One',cursive;font-size:1.4rem;color:var(--orange-d);margin-bottom:14px}
+.ps-text{font-size:.97rem;font-weight:600;color:#444;line-height:1.9;margin-bottom:0}
+.ps-text strong{color:var(--purple-d)}
+
+/* ══════════ FOOTER ══════════ */
+footer{background:#1a1a2e;color:rgba(255,255,255,.45);text-align:center;padding:24px 20px;font-size:.76rem;font-weight:600}
+
+/* ══════════ DEMO / CAROUSEL ══════════ */
+.demo-sec{background:linear-gradient(160deg,#F3E8FF,#E8F9FF);text-align:center}
+.carousel-wrap{
+  width:100%;overflow:hidden;
+  -webkit-mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+  mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+  margin-top:8px;
+}
+.carousel-track{
+  display:flex;gap:18px;align-items:center;
+  width:max-content;
+  animation:scrollLeft 28s linear infinite;
+}
+.carousel-track:hover{animation-play-state:paused}
+.carousel-track img{
+  height:300px;width:auto;
+  border-radius:18px;
+  box-shadow:0 8px 28px rgba(0,0,0,.15);
+  border:4px solid #fff;
+  flex-shrink:0;
+  transition:transform .3s;
+  cursor:pointer;
+}
+.carousel-track img:hover{transform:scale(1.07) rotate(-1deg)}
+@keyframes scrollLeft{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
+}
+@media(max-width:640px){
+  .carousel-track img{height:260px}
+  .carousel-track{gap:14px}
+}
+
+/* ══════════ RESPONSIVE ══════════ */
+@media(max-width:640px){
+  section{padding:48px 0}
+  .kids-row{gap:8px;max-width:340px}
+  .kid-svg{width:72px;height:90px}
+  .prob-grid{grid-template-columns:repeat(2,1fr)}
+  .heroes-grid{grid-template-columns:repeat(2,1fr)}
+  .step{flex-direction:column;text-align:center;gap:10px}
+  .step:hover{transform:none}
+  .testi-grid{grid-template-columns:1fr}
+  .offer-box,.price-box{padding:24px 18px}
+  .bonus-row{flex-direction:column;align-items:flex-start;gap:6px}
+  .br{text-align:left}
+  .btn{font-size:1rem;padding:16px 28px;width:100%;max-width:360px}
+}
+@media(min-width:641px) and (max-width:900px){
+  .heroes-grid{grid-template-columns:repeat(3,1fr)}
+  .prob-grid{grid-template-columns:repeat(3,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero">
+  <span class="float-el" style="top:8%;left:4%;animation-delay:.2s">⭐</span>
+  <span class="float-el" style="top:12%;right:5%;animation-delay:.8s">🌈</span>
+  <span class="float-el" style="top:6%;right:18%;animation-delay:1.2s">☁️</span>
+  <span class="float-el" style="bottom:16%;left:3%;animation-delay:.5s">🛡️</span>
+  <span class="float-el" style="bottom:14%;right:4%;animation-delay:.3s">⚡</span>
+
+  <div class="container hero-inner">
+    <div class="badge">🦸 Para famílias que formam heróis!</div>
+    <h1>E se os maiores <span class="c-blue">heróis</span> da história ensinassem seus filhos sobre <span class="c-orange">dinheiro, caráter</span> e <span class="c-purple">propósito</span>?</h1>
+
+    <div class="hero-cards">
+      <img src="https://metodoautocoaching.com/wp-content/uploads/2026/05/88dec758-d9d3-4496-b37e-88fed787be49-201x300.jpg" alt="Card herói"/>
+      <img src="https://metodoautocoaching.com/wp-content/uploads/2026/05/82c12847-035e-4809-96be-7a480ed9ea3f-201x300.jpg" alt="Card herói"/>
+      <img src="https://metodoautocoaching.com/wp-content/uploads/2026/05/84bc48d2-d01c-4a74-ad62-aa734c5e869b-201x300.jpg" alt="Card herói"/>
+    </div>
+
+    <p class="hero-sub"><b>Davi, José, Salomão, Ester e Moisés</b> vão ensinar o que nenhuma escola ensina!<br/>Tudo em apenas <b>10 minutos por dia</b> — na cama, no carro, no jantar! 🎉</p>
+  </div>
+</section>
+
+<!-- ══════════ DEMONSTRAÇÃO ══════════ -->
+<section class="demo-sec">
+  <div class="container text-center">
+    <span class="section-tag">👀 Veja como é</span>
+    <h2 class="sec-title">Dê uma <span class="c-purple">espiada</span> nos cards! 🃏</h2>
+    <p class="sec-sub">Mais de 500 cards lindos, coloridos e prontos para usar com seus filhos hoje mesmo!</p>
+    <div class="carousel-wrap">
+      <div class="carousel-track" id="track">
+        <img src="https://metodoautocoaching.com/wp-content/uploads/2026/05/88dec758-d9d3-4496-b37e-88fed787be49-201x300.jpg" alt="Card herói"/>
+        <img src="https://metodoautocoaching.com/wp-content/uploads/2026/05/82c12847-035e-4809-96be-7a480ed9ea3f-201x300.jpg" alt="Card herói"/>
+        <img src="https://metodoautocoaching.com/wp-content/uploads/2026/05/84bc48d2-d01c-4a74-ad62-aa734c5e869b-201x300.jpg" alt="Card herói"/>
+        <img src="https://metodoautocoaching.com/wp-content/uploads/2026/05/3d87a033-3b30-4693-8651-66b43d1868e2-201x300.jpg" alt="Card herói"/>
+        <img src="https://metodoautocoaching.com/wp-content/uploads/2026/05/9854ab73-9dfb-4286-a12d-9d9e0f58940b-201x300.jpg" alt="Card herói"/>
+        <img src="https://metodoautocoaching.com/wp-content/uploads/2026/05/6b540171-e257-4b99-9bca-7871f46ed4b3-201x300.jpg" alt="Card herói"/>
+        <img src="https://metodoautocoaching.com/wp-content/uploads/2026/05/f7ef3268-2c26-4ac0-a84b-254b666cd3a9-201x300.jpg" alt="Card herói"/>
+        <img src="https://metodoautocoaching.com/wp-content/uploads/2026/05/13f99d0c-f4d2-4b8a-9c47-e05a459c45e9-201x300.jpg" alt="Card herói"/>
+        <img src="https://metodoautocoaching.com/wp-content/uploads/2026/05/91e1966d-dfd9-4009-b5ad-f847eb8f7482-201x300.jpg" alt="Card herói"/>
+        <!-- duplicadas para loop infinito -->
+        <img src="https://metodoautocoaching.com/wp-content/uploads/2026/05/88dec758-d9d3-4496-b37e-88fed787be49-201x300.jpg" alt="Card herói"/>
+        <img src="https://metodoautocoaching.com/wp-content/uploads/2026/05/82c12847-035e-4809-96be-7a480ed9ea3f-201x300.jpg" alt="Card herói"/>
+        <img src="https://metodoautocoaching.com/wp-content/uploads/2026/05/84bc48d2-d01c-4a74-ad62-aa734c5e869b-201x300.jpg" alt="Card herói"/>
+        <img src="https://metodoautocoaching.com/wp-content/uploads/2026/05/3d87a033-3b30-4693-8651-66b43d1868e2-201x300.jpg" alt="Card herói"/>
+        <img src="https://metodoautocoaching.com/wp-content/uploads/2026/05/9854ab73-9dfb-4286-a12d-9d9e0f58940b-201x300.jpg" alt="Card herói"/>
+        <img src="https://metodoautocoaching.com/wp-content/uploads/2026/05/6b540171-e257-4b99-9bca-7871f46ed4b3-201x300.jpg" alt="Card herói"/>
+        <img src="https://metodoautocoaching.com/wp-content/uploads/2026/05/f7ef3268-2c26-4ac0-a84b-254b666cd3a9-201x300.jpg" alt="Card herói"/>
+        <img src="https://metodoautocoaching.com/wp-content/uploads/2026/05/13f99d0c-f4d2-4b8a-9c47-e05a459c45e9-201x300.jpg" alt="Card herói"/>
+        <img src="https://metodoautocoaching.com/wp-content/uploads/2026/05/91e1966d-dfd9-4009-b5ad-f847eb8f7482-201x300.jpg" alt="Card herói"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PROBLEMA ══════════ -->
+<section class="problem-sec">
+  <div class="container text-center">
+    <span class="section-tag">😥 O problema</span>
+    <h2 class="sec-title">Ninguém nos ensinou <span class="c-orange">a ensinar…</span></h2>
+    <p class="sec-sub">A escola ensina conta e português. Mas quem ensina seu filho que guardar dinheiro é sabedoria? Que ter propósito muda tudo?</p>
+    <div class="prob-grid">
+      <div class="prob-card"><div class="ico">😤</div><p>Não sabe lidar com frustração</p></div>
+      <div class="prob-card"><div class="ico">💸</div><p>Gasta tudo sem pensar no amanhã</p></div>
+      <div class="prob-card"><div class="ico">📱</div><p>A tela ensina mais do que você</p></div>
+      <div class="prob-card"><div class="ico">😓</div><p>Você chega sem energia no fim do dia</p></div>
+      <div class="prob-card"><div class="ico">❓</div><p>Não sabe por onde começar</p></div>
+      <div class="prob-card"><div class="ico">💔</div><p>Quer passar valores mas não sabe como</p></div>
+    </div>
+    <div class="prob-highlight">
+      🎯 Não é culpa sua. Ninguém te deu uma ferramenta para isso.<br/><strong style="font-size:1.15rem">Até agora! 🚀</strong>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ HERÓIS ══════════ -->
+<section class="heroes-sec">
+  <div class="container text-center">
+    <span class="section-tag">✨ Conheça os heróis</span>
+    <h2 class="sec-title">Cada herói tem um <span class="c-purple">superpoder</span> para ensinar! 🦸</h2>
+    <p class="sec-sub">Passe o mouse sobre cada herói para descobrir!</p>
+    <div class="heroes-grid">
+      <div class="hero-char c1"><span class="char-avatar">🦁</span><div class="char-name">Davi</div><span class="char-tag">Coragem</span><p class="char-lesson">Agir mesmo com medo — esse é o verdadeiro superpoder!</p></div>
+      <div class="hero-char c2"><span class="char-avatar">🌾</span><div class="char-name">José</div><span class="char-tag">💰 Finanças</span><p class="char-lesson">Poupar, planejar e virar o jogo mesmo nos momentos difíceis!</p></div>
+      <div class="hero-char c3"><span class="char-avatar">👑</span><div class="char-name">Salomão</div><span class="char-tag">Sabedoria</span><p class="char-lesson">Pensar antes de agir e tomar boas decisões!</p></div>
+      <div class="hero-char c4"><span class="char-avatar">⭐</span><div class="char-name">Ester</div><span class="char-tag">Identidade</span><p class="char-lesson">Ser quem você é mesmo quando o mundo pressiona!</p></div>
+      <div class="hero-char c5"><span class="char-avatar">🗺️</span><div class="char-name">Moisés</div><span class="char-tag">Propósito</span><p class="char-lesson">Descobrir seu chamado e não desistir no caminho!</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ COMO FUNCIONA ══════════ -->
+<section class="how-sec">
+  <div class="container text-center">
+    <span class="section-tag">🎮 Como funciona</span>
+    <h2 class="sec-title">Só <span class="c-blue">10 minutos</span> por dia! É simples assim! 😄</h2>
+    <div class="steps-col">
+      <div class="step"><div class="step-num">1</div><div class="step-icon">📖</div><div class="step-body"><strong>Escolha um herói do dia</strong><p>Abra o card no celular, tablet ou impresso</p></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-icon">🎙️</div><div class="step-body"><strong>Leia a história juntos</strong><p>Uma história simples que prende até as crianças mais agitadas!</p></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-icon">💡</div><div class="step-body"><strong>Descubra a lição do dia</strong><p>Um princípio prático que a criança aplica já naquele dia</p></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-icon">📜</div><div class="step-body"><strong>Versículo âncora</strong><p>Fixa a verdade e cria memória afetiva com a Palavra</p></div></div>
+      <div class="step"><div class="step-num">5</div><div class="step-icon">🎯</div><div class="step-body"><strong>Missão do dia — Ação!</strong><p>Um desafio divertido para colocar o aprendizado em prática!</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ DEPOIMENTOS ══════════ -->
+<section class="testi-sec">
+  <div class="container text-center">
+    <span class="section-tag">💬 Quem já usa</span>
+    <h2 class="sec-title">Famílias que estão <span class="c-pink">amando!</span> 🥰</h2>
+    <div class="testi-grid">
+      <div class="testi-card"><div class="testi-quote">"</div><p class="testi-text">Meu filho de 9 anos passou a guardar a mesada depois da história do José. Ele mesmo concluiu que Deus honra quem planeja!</p><div class="testi-author"><div class="testi-avatar">👩</div><div><div class="testi-name">Fernanda R.</div><div class="testi-city">São Paulo – SP</div></div></div></div>
+      <div class="testi-card"><div class="testi-quote">"</div><p class="testi-text">Minha filha de 12 anos entrou no palco e lembrou que Ester também tinha medo. Chorei! 😭</p><div class="testi-author"><div class="testi-avatar">👨</div><div><div class="testi-name">Marcos T.</div><div class="testi-city">Curitiba – PR</div></div></div></div>
+      <div class="testi-card"><div class="testi-quote">"</div><p class="testi-text">Com os Heróis do Propósito, o devocional virou o momento que eles mais pedem! 🙌</p><div class="testi-author"><div class="testi-avatar">👩‍🦱</div><div><div class="testi-name">Ana Paula S.</div><div class="testi-city">Belo Horizonte – MG</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ OFERTA ══════════ -->
+<section class="offer-sec" id="oferta">
+  <div class="container text-center">
+    <span class="section-tag">🎁 Sua aventura começa aqui</span>
+    <h2 class="sec-title">Tudo que sua família precisa para <span class="c-green">começar hoje!</span></h2>
+    <div class="offer-box">
+      <div class="offer-title">📦 Produto Principal — +500 Cards!</div>
+      <p class="offer-desc">Cards de Heróis Bíblicos com história, lição, versículo e missão do dia — organizados por valores, finanças, sabedoria, liderança e propósito. <strong>PDF + editável no Canva.</strong></p>
+      <div class="bonus-list">
+        <div class="bonus-row"><div class="bl"><span class="b-em">🎁</span><div><div class="b-name">Bônus 1 — Guia do Pai Herói</div><div class="b-desc">Como usar os cards em 10 min na rotina da família</div></div></div><div class="br"><div class="b-old">R$29,90</div><div class="b-free">GRÁTIS!</div></div></div>
+        <div class="bonus-row"><div class="bl"><span class="b-em">📓</span><div><div class="b-name">Bônus 2 — Diário do Jovem Herói</div><div class="b-desc">Caderno de missões imprimível para a criança</div></div></div><div class="br"><div class="b-old">R$27,90</div><div class="b-free">GRÁTIS!</div></div></div>
+        <div class="bonus-row"><div class="bl"><span class="b-em">💰</span><div><div class="b-name">Bônus 3 — Trilha das Finanças com José</div><div class="b-desc">10 lições de educação financeira infantil</div></div></div><div class="br"><div class="b-old">R$37,00</div><div class="b-free">GRÁTIS!</div></div></div>
+        <div class="bonus-row"><div class="bl"><span class="b-em">🗓️</span><div><div class="b-name">Bônus 4 — Plano Familiar 30 Dias</div><div class="b-desc">Um herói por semana, uma virtude por mês</div></div></div><div class="br"><div class="b-old">R$19,90</div><div class="b-free">GRÁTIS!</div></div></div>
+      </div>
+    </div>
+    <div class="price-box">
+      <p class="price-from">De R$97,00</p>
+      <div class="price-row"><span class="price-prefix">R$</span><span class="price-main">10</span><span class="price-suffix">,00</span></div>
+      <p class="price-desc">à vista — acesso imediato!</p>
+      <a class="btn btn-green" href="https://pay.hotmart.com/G106090646I?checkoutMode=10">🦸 Quero criar heróis em casa — Acessar AGORA!</a>
+      <p class="price-secure">🔒 Pagamento seguro &nbsp;·&nbsp; Acesso imediato &nbsp;·&nbsp; Garantia de 30 dias</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ GARANTIA ══════════ -->
+<section class="guarantee-sec">
+  <div class="container text-center">
+    <div class="seal"><span class="seal-num">30</span><span class="seal-txt">dias de garantia</span></div>
+    <h2 class="sec-title">Garantia <span class="c-orange">Herói!</span> 🛡️</h2>
+    <p class="guarantee-text">Se você abrir, usar com seus filhos e sentir que não valeu cada centavo — basta mandar um e-mail. <strong>Devolvemos tudo, sem perguntas, sem burocracia!</strong><br/><br/>O risco é nosso. A família é sua. ❤️</p>
+  </div>
+</section>
+
+<!-- ══════════ URGÊNCIA ══════════ -->
+<section class="urgency-sec">
+  <div class="container">
+    <div style="font-size:2.8rem;margin-bottom:14px">⚠️</div>
+    <h2 class="sec-title">Os bônus são por <span class="c-yellow">tempo limitado!</span></h2>
+    <p class="urgency-text">Quando essa página fechar, o produto volta ao preço cheio de <strong>R$97</strong> — sem os bônus e sem a garantia estendida.<br/><br/><strong>Cada dia sem essa ferramenta é um dia que outra coisa está formando o caráter do seu filho no lugar de você.</strong></p>
+  </div>
+</section>
+
+<!-- ══════════ PS ══════════ -->
+<section class="ps-sec">
+  <div class="container">
+    <div class="ps-box">
+      <div class="ps-label">📌 P.S. — Uma última coisa…</div>
+      <p class="ps-text"><strong>Davi não nasceu rei.</strong> José não nasceu rico. Moisés não nasceu líder. Eles foram formados — por histórias, por provações, por propósito.<br/><br/>Você tem a chance de plantar isso no coração do seu filho agora, <strong>enquanto ele ainda olha para você como herói.</strong><br/><br/>Não deixa passar! 💛</p>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Heróis do Propósito · Todos os direitos reservados<br/>Este produto é digital. Após a compra, o acesso é enviado ao e-mail cadastrado.</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}
+    });
+  },{threshold:.07});
+  document.querySelectorAll('section').forEach(s => {
+    s.style.opacity='0';s.style.transform='translateY(28px)';
+    s.style.transition='opacity .55s ease, transform .55s ease';
+    obs.observe(s);
+  });
+</script>
+</body>
+</html>
