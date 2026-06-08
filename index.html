@@ -47,7 +47,8 @@
     .faq-content.open { max-height: 600px; }
     .faq-icon { transition: transform .3s ease; }
     .faq-icon.open { transform: rotate(45deg); }
-    img { object-fit: cover; }
+    img { object-fit: cover; image-rendering: crisp-edges; -webkit-font-smoothing: antialiased; filter: contrast(1.1) brightness(1); }
+    img:hover { filter: contrast(1.15) brightness(1.05); }
   </style>
 </head>
 <body class="bg-bege text-texto antialiased">
@@ -69,7 +70,7 @@
       <!-- Imagem grande -->
       <div class="relative">
       <!-- IMPORTANTE: SUBSTITUA PELA SUA IMAGEM DE SHIH TZU (use foto de um shih tzu real/fofo) -->
-        <img src="https://metodoautocoaching.com/wp-content/uploads/2026/06/8c2433e8-f025-49e7-aac7-fcbed2880b10-removebg-preview-300x201.png" alt="Shih Tzu fofo" class="rounded-3xl shadow-2xl w-full max-w-sm h-auto object-contain">
+        <img src="https://metodoautocoaching.com/wp-content/uploads/2026/06/8c2433e8-f025-49e7-aac7-fcbed2880b10-removebg-preview-300x201.png" alt="Shih Tzu fofo" class="rounded-3xl shadow-2xl w-full max-w-lg h-auto">
         <div class="absolute -bottom-5 -left-5 bg-menta text-texto font-black px-6 py-4 rounded-2xl shadow-xl text-lg">
           ⭐ +5.000 tutores
         </div>
@@ -221,7 +222,7 @@
         </div>
       </div>
       <!-- IMPORTANTE: SUBSTITUA PELA SUA IMAGEM DE SHIH TZU (comportado/feliz) -->
-      <img src="https://images.unsplash.com/photo-1544568100-847a948585b0?w=600&h=750&fit=crop" alt="Shih Tzu comportado" class="rounded-3xl shadow-2xl w-full h-full max-h-[640px] sticky top-8">
+      <img src="https://metodoautocoaching.com/wp-content/uploads/2026/06/b64adcaf-1017-47e5-9b27-bd93840c9f2f-300x201.jpg" alt="Shih Tzu comportado" class="rounded-3xl shadow-2xl w-full h-auto object-contain sticky top-8">
     </div>
   </div>
 </section>
