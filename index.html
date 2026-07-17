@@ -3,24 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Manual Completo do Shih Tzu - Resolva os Problemas Agora</title>
+  <title>Manual Completo do Shih Tzu</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'dor': '#9F1239',
-            'bege': '#F5EDE4',
-            'menta': '#34D399',
-            'dourado': '#D4A017',
-            'texto': '#1F2937',
-          },
-          fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-          }
-        }
-      }
+      theme: { extend: {
+        colors: { 'dor': '#9F1239', 'bege': '#F5EDE4', 'menta': '#34D399', 'dourado': '#D4A017', 'texto': '#1F2937' },
+        fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] }
+      } }
     }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,380 +31,255 @@
     .gradient-dor { background: linear-gradient(135deg, #9F1239 0%, #6B0821 100%); }
     .btn-cta { transition: all .3s ease; }
     .btn-cta:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 15px 40px rgba(159,18,57,.35); }
-    .card-hover { transition: all .3s ease; }
-    .card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,.1); }
     .faq-content { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
-    .faq-content.open { max-height: 600px; }
+    .faq-content.open { max-height: 500px; }
     .faq-icon { transition: transform .3s ease; }
     .faq-icon.open { transform: rotate(45deg); }
-    img { object-fit: cover; image-rendering: crisp-edges; -webkit-font-smoothing: antialiased; filter: contrast(1.1) brightness(1); }
-    img:hover { filter: contrast(1.15) brightness(1.05); }
+    img { image-rendering: auto; }
+    .pulse { animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.03); } }
   </style>
 </head>
 <body class="bg-bege text-texto antialiased">
 
-<!-- ===================== BLOCO 1: HERO ===================== -->
+<!-- ============ HERO ============ -->
 <section class="gradient-dor text-white">
-  <div class="max-w-6xl mx-auto px-6 py-16 md:py-24">
-    <div class="grid md:grid-cols-2 gap-12 items-center">
-      <!-- Texto -->
+  <div class="max-w-5xl mx-auto px-6 py-16 md:py-20">
+    <div class="grid md:grid-cols-2 gap-10 items-center">
       <div>
-        <span class="inline-block bg-dourado text-texto text-sm font-bold px-4 py-2 rounded-full mb-6">GUIA DEFINITIVO PARA TUTORES</span>
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-[1.1]">
+        <h1 class="text-4xl md:text-5xl font-black mb-5 leading-[1.1]">
           Seu Shih Tzu Faz Xixi Fora do Lugar, Come Cocô e Não Obedece?
         </h1>
-        <p class="text-xl md:text-2xl font-bold text-red-100 leading-snug">
-          Chega de bagunça, vergonha e estresse todos os dias na sua casa.
+        <p class="text-xl md:text-2xl font-bold text-red-100 leading-snug mb-6">
+          Resolva tudo em casa, sem gastar com adestrador.
+        </p>
+        <p class="text-lg text-red-50/90">
+          O guia direto ao ponto que já ajudou +5.000 tutores a acabar com a bagunça, a vergonha e o estresse do dia a dia.
         </p>
       </div>
-      <!-- Imagem grande -->
-      <div class="relative">
-      <!-- IMPORTANTE: SUBSTITUA PELA SUA IMAGEM DE SHIH TZU (use foto de um shih tzu real/fofo) -->
-        <img src="https://metodoautocoaching.com/wp-content/uploads/2026/06/8c2433e8-f025-49e7-aac7-fcbed2880b10-removebg-preview-300x201.png" alt="Shih Tzu fofo" class="rounded-3xl shadow-2xl w-full max-w-lg h-auto">
-        <div class="absolute -bottom-5 -left-5 bg-menta text-texto font-black px-6 py-4 rounded-2xl shadow-xl text-lg">
-          ⭐ +5.000 tutores
-        </div>
-      </div>
-    </div>
-
-    <!-- Subheadline -->
-    <div class="bg-white/10 backdrop-blur rounded-3xl p-8 md:p-10 mt-16 border border-white/20">
-      <p class="text-lg md:text-xl leading-relaxed text-red-50 mb-8">
-        Você chega em casa e encontra xixi espalhado pelo chão, cocô no tapete, móveis roídos e seu Shih Tzu ignorando todos os comandos? Milhares de tutores vivem esse pesadelo todos os dias. Com o <strong>Manual Completo do Shih Tzu</strong> você resolve esses problemas de uma vez por todas, direto de casa, sem precisar gastar com adestrador.
-      </p>
-      <div class="grid md:grid-cols-2 gap-5">
-        <div class="flex items-start gap-3"><span class="text-menta text-2xl font-black flex-shrink-0">✓</span><p class="font-semibold text-lg">Acabe com os acidentes de xixi e cocô dentro de casa</p></div>
-        <div class="flex items-start gap-3"><span class="text-menta text-2xl font-black flex-shrink-0">✓</span><p class="font-semibold text-lg">Pare de ver seu Shih Tzu comendo cocô e destruindo coisas</p></div>
-        <div class="flex items-start gap-3"><span class="text-menta text-2xl font-black flex-shrink-0">✓</span><p class="font-semibold text-lg">Tenha um cão que realmente obedece os comandos</p></div>
-        <div class="flex items-start gap-3"><span class="text-menta text-2xl font-black flex-shrink-0">✓</span><p class="font-semibold text-lg">Livre-se da vergonha quando visitas chegam em casa</p></div>
-        <div class="flex items-start gap-3 md:col-span-2"><span class="text-menta text-2xl font-black flex-shrink-0">✓</span><p class="font-semibold text-lg">Melhore a saúde e a convivência com seu pet</p></div>
-      </div>
+      <img src="https://metodoautocoaching.com/wp-content/uploads/2026/06/8c2433e8-f025-49e7-aac7-fcbed2880b10-removebg-preview-300x201.png" alt="Manual do Shih Tzu" class="w-full max-w-md mx-auto h-auto drop-shadow-2xl">
     </div>
   </div>
 </section>
 
-<!-- ===================== BLOCO 2: VANTAGENS ===================== -->
-<section class="py-20 md:py-28 bg-white">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="text-center mb-16 max-w-3xl mx-auto">
-      <h2 class="text-3xl md:text-5xl font-black text-dor mb-4 leading-tight">
-        Por que este manual está mudando a vida de milhares de tutores de Shih Tzu?
-      </h2>
-      <p class="text-gray-500 text-lg">Soluções práticas e específicas para a raça que realmente funcionam</p>
-    </div>
-
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div class="card-hover bg-bege rounded-3xl p-8 border-t-4 border-dor">
-        <div class="text-5xl mb-4">🚽</div>
-        <h3 class="text-2xl font-black text-dor mb-3">Acaba com xixi e cocô fora do lugar</h3>
-        <p class="text-gray-700 text-lg">Estratégia específica e prática para Shih Tzu que realmente funciona.</p>
-      </div>
-      <div class="card-hover bg-bege rounded-3xl p-8 border-t-4 border-dor">
-        <div class="text-5xl mb-4">🚫</div>
-        <h3 class="text-2xl font-black text-dor mb-3">Elimina o hábito de comer cocô</h3>
-        <p class="text-gray-700 text-lg">Entenda as causas e resolva de forma definitiva.</p>
-      </div>
-      <div class="card-hover bg-bege rounded-3xl p-8 border-t-4 border-dor">
-        <div class="text-5xl mb-4">🎯</div>
-        <h3 class="text-2xl font-black text-dor mb-3">Ensina obediência real</h3>
-        <p class="text-gray-700 text-lg">Seu Shih Tzu vai obedecer mesmo quando você não estiver olhando.</p>
-      </div>
-      <div class="card-hover bg-bege rounded-3xl p-8 border-t-4 border-dor">
-        <div class="text-5xl mb-4">🔇</div>
-        <h3 class="text-2xl font-black text-dor mb-3">Reduz latidos e ansiedade de separação</h3>
-        <p class="text-gray-700 text-lg">Acabe com o estresse do cão e da família.</p>
-      </div>
-      <div class="card-hover bg-bege rounded-3xl p-8 border-t-4 border-dor">
-        <div class="text-5xl mb-4">💊</div>
-        <h3 class="text-2xl font-black text-dor mb-3">Previne problemas de saúde caros</h3>
-        <p class="text-gray-700 text-lg">Evite infecções, alergias e visitas constantes ao veterinário.</p>
-      </div>
-      <div class="card-hover bg-bege rounded-3xl p-8 border-t-4 border-dor">
-        <div class="text-5xl mb-4">💰</div>
-        <h3 class="text-2xl font-black text-dor mb-3">Economia de tempo e dinheiro</h3>
-        <p class="text-gray-700 text-lg">Pare de limpar a casa várias vezes por dia e gastar com adestradores.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== BLOCO 3: ENTREGÁVEIS ===================== -->
-<section class="py-20 md:py-28 bg-gradient-to-b from-white to-bege">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
-      <img src="https://metodoautocoaching.com/wp-content/uploads/2026/06/0189732b-1947-417e-baf3-2c1c911577c2-300x201.jpg" alt="Shih Tzu feliz" class="rounded-3xl shadow-2xl w-full max-w-md h-auto object-contain">
-      <div>
-        <h2 class="text-3xl md:text-5xl font-black text-dor mb-4 leading-tight">
-          Tudo que você recebe para acabar com os problemas do seu Shih Tzu
-        </h2>
-        <p class="text-gray-600 text-lg">6 módulos completos, ilustrados e diretos ao ponto. Cada um resolve um problema real do dia a dia.</p>
-      </div>
-    </div>
-
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div class="bg-white rounded-3xl p-8 shadow-lg border-l-4 border-menta">
-        <h3 class="text-2xl font-black text-texto mb-4">📋 Adestramento Sanitário Definitivo</h3>
-        <ul class="space-y-3 text-gray-700 text-lg">
-          <li class="flex gap-2"><span class="text-menta font-black">✓</span> Ensinar a fazer as necessidades no lugar certo</li>
-          <li class="flex gap-2"><span class="text-menta font-black">✓</span> Acabar de vez com xixi e cocô pela casa</li>
-          <li class="flex gap-2"><span class="text-menta font-black">✓</span> Técnicas para filhotes e adultos</li>
-        </ul>
-      </div>
-      <div class="bg-white rounded-3xl p-8 shadow-lg border-l-4 border-menta">
-        <h3 class="text-2xl font-black text-texto mb-4">🎯 Controle de Comportamentos</h3>
-        <ul class="space-y-3 text-gray-700 text-lg">
-          <li class="flex gap-2"><span class="text-menta font-black">✓</span> Parar de comer cocô de forma definitiva</li>
-          <li class="flex gap-2"><span class="text-menta font-black">✓</span> Deixar de roer móveis e objetos</li>
-          <li class="flex gap-2"><span class="text-menta font-black">✓</span> Reduzir latidos e pulos nas pessoas</li>
-        </ul>
-      </div>
-      <div class="bg-white rounded-3xl p-8 shadow-lg border-l-4 border-menta">
-        <h3 class="text-2xl font-black text-texto mb-4">🍖 Alimentação Correta e Saudável</h3>
-        <ul class="space-y-3 text-gray-700 text-lg">
-          <li class="flex gap-2"><span class="text-menta font-black">✓</span> O que dar e o que evitar</li>
-          <li class="flex gap-2"><span class="text-menta font-black">✓</span> Melhorar digestão e reduzir cocô mole</li>
-          <li class="flex gap-2"><span class="text-menta font-black">✓</span> Eliminar mau cheiro corporal</li>
-        </ul>
-      </div>
-      <div class="bg-white rounded-3xl p-8 shadow-lg border-l-4 border-menta">
-        <h3 class="text-2xl font-black text-texto mb-4">✨ Cuidados com Pelagem e Higiene</h3>
-        <ul class="space-y-3 text-gray-700 text-lg">
-          <li class="flex gap-2"><span class="text-menta font-black">✓</span> Rotina completa de escovação</li>
-          <li class="flex gap-2"><span class="text-menta font-black">✓</span> Banho e tosa higiênica correta</li>
-          <li class="flex gap-2"><span class="text-menta font-black">✓</span> Prevenir nós, cheiro ruim e dermatites</li>
-        </ul>
-      </div>
-      <div class="bg-white rounded-3xl p-8 shadow-lg border-l-4 border-menta">
-        <h3 class="text-2xl font-black text-texto mb-4">💊 Saúde e Prevenção</h3>
-        <ul class="space-y-3 text-gray-700 text-lg">
-          <li class="flex gap-2"><span class="text-menta font-black">✓</span> Sinais de alerta e doenças comuns</li>
-          <li class="flex gap-2"><span class="text-menta font-black">✓</span> Calendário de vacinação atualizado</li>
-          <li class="flex gap-2"><span class="text-menta font-black">✓</span> Cuidados para evitar problemas graves</li>
-        </ul>
-      </div>
-      <div class="bg-white rounded-3xl p-8 shadow-lg border-l-4 border-menta">
-        <h3 class="text-2xl font-black text-texto mb-4">🤝 Socialização e Convívio</h3>
-        <ul class="space-y-3 text-gray-700 text-lg">
-          <li class="flex gap-2"><span class="text-menta font-black">✓</span> Reduzir ansiedade e agressividade</li>
-          <li class="flex gap-2"><span class="text-menta font-black">✓</span> Melhorar convívio dentro de casa</li>
-          <li class="flex gap-2"><span class="text-menta font-black">✓</span> Criar vínculos saudáveis com a família</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== BLOCO 4: PARA QUEM É ===================== -->
-<section class="py-20 md:py-28 bg-white">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="grid md:grid-cols-2 gap-12 items-center">
-      <div>
-        <h2 class="text-3xl md:text-5xl font-black text-dor mb-10 leading-tight">
-          Este manual foi feito para você que:
-        </h2>
-        <div class="space-y-4">
-          <div class="flex items-center gap-4 p-5 bg-bege rounded-2xl"><span class="text-menta text-3xl flex-shrink-0">✅</span><p class="text-lg font-semibold">Está cansado de limpar xixi e cocô todos os dias</p></div>
-          <div class="flex items-center gap-4 p-5 bg-bege rounded-2xl"><span class="text-menta text-3xl flex-shrink-0">✅</span><p class="text-lg font-semibold">Tem vergonha de receber visitas pela bagunça que seu Shih Tzu faz</p></div>
-          <div class="flex items-center gap-4 p-5 bg-bege rounded-2xl"><span class="text-menta text-3xl flex-shrink-0">✅</span><p class="text-lg font-semibold">Já tentou de tudo e o cachorro continua não obedecendo</p></div>
-          <div class="flex items-center gap-4 p-5 bg-bege rounded-2xl"><span class="text-menta text-3xl flex-shrink-0">✅</span><p class="text-lg font-semibold">Quer parar de gastar com adestrador e produtos que não funcionam</p></div>
-          <div class="flex items-center gap-4 p-5 bg-bege rounded-2xl"><span class="text-menta text-3xl flex-shrink-0">✅</span><p class="text-lg font-semibold">Ama seu Shih Tzu mas está estressado com o comportamento dele</p></div>
-          <div class="flex items-center gap-4 p-5 bg-bege rounded-2xl"><span class="text-menta text-3xl flex-shrink-0">✅</span><p class="text-lg font-semibold">Quer finalmente ter paz, harmonia e uma casa limpa</p></div>
-        </div>
-      </div>
-      <!-- IMPORTANTE: SUBSTITUA PELA SUA IMAGEM DE SHIH TZU (comportado/feliz) -->
-      <img src="https://metodoautocoaching.com/wp-content/uploads/2026/06/b64adcaf-1017-47e5-9b27-bd93840c9f2f-300x201.jpg" alt="Shih Tzu comportado" class="rounded-3xl shadow-2xl w-full h-auto object-contain sticky top-8">
-    </div>
-  </div>
-</section>
-
-<!-- ===================== BLOCO 5: BÔNUS ===================== -->
-<section class="py-20 md:py-28 bg-gradient-to-b from-bege to-white">
-  <div class="max-w-6xl mx-auto px-6">
-    <div class="text-center mb-16 max-w-3xl mx-auto">
-      <span class="inline-block bg-dourado text-texto text-sm font-bold px-4 py-2 rounded-full mb-4">PRESENTE ESPECIAL</span>
-      <h2 class="text-3xl md:text-5xl font-black text-dor mb-4 leading-tight">
-        3 Bônus Exclusivos (Valor Total R$ 147)<br>Grátis Hoje
+<!-- ============ O QUE VOCÊ VAI RECEBER (característica + benefício) ============ -->
+<section class="py-16 md:py-24 bg-white">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="text-center mb-14">
+      <span class="inline-block bg-dor/10 text-dor text-sm font-bold px-4 py-2 rounded-full mb-4">O QUE VOCÊ VAI RECEBER</span>
+      <h2 class="text-3xl md:text-4xl font-black text-texto leading-tight">
+        Cada página resolve um problema real da sua casa
       </h2>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-8">
-      <div class="card-hover bg-white rounded-3xl shadow-xl overflow-hidden border-2 border-dourado">
-        <!-- Guia completo de tipos de tosa -->
-        <img src="https://metodoautocoaching.com/wp-content/uploads/2026/06/c5948941-edeb-4325-96d4-829b1d11cbb3-300x300.jpg" alt="Guia de Tosa" class="w-full h-56 object-cover">
-        <div class="p-8 relative">
-          <span class="absolute -top-5 right-6 bg-menta text-texto font-black px-4 py-2 rounded-full text-sm shadow-lg">GRÁTIS</span>
-          <h3 class="text-xl font-black text-texto mb-3">📸 Guia Completo de Tipos de Tosa</h3>
-          <p class="text-gray-700">As melhores tosas higiênicas e estéticas com instruções passo a passo + fotos.</p>
-          <p class="text-sm text-gray-400 mt-4 line-through">Valor: R$ 47</p>
+    <div class="space-y-5">
+      <div class="flex gap-5 items-start p-6 bg-bege rounded-2xl">
+        <span class="text-4xl flex-shrink-0">🚽</span>
+        <div>
+          <h3 class="text-xl font-black text-dor mb-1">Adestramento sanitário definitivo</h3>
+          <p class="text-lg text-gray-700">Nunca mais limpe xixi e cocô pela casa. Seu Shih Tzu aprende o lugar certo — filhote ou adulto.</p>
         </div>
       </div>
-      <div class="card-hover bg-white rounded-3xl shadow-xl overflow-hidden border-2 border-dourado">
-        <!-- Cardápio Natural + Receitas -->
-        <img src="https://metodoautocoaching.com/wp-content/uploads/2026/06/8db861c4-478d-448c-82c6-8ab5becfffd8-300x300.jpg" alt="Cardápio Natural" class="w-full h-56 object-cover">
-        <div class="p-8 relative">
-          <span class="absolute -top-5 right-6 bg-menta text-texto font-black px-4 py-2 rounded-full text-sm shadow-lg">GRÁTIS</span>
-          <h3 class="text-xl font-black text-texto mb-3">🥗 Cardápio Natural + Receitas</h3>
-          <p class="text-gray-700">Alimentação natural barata que melhora a digestão e reduz cheiro forte de cocô.</p>
-          <p class="text-sm text-gray-400 mt-4 line-through">Valor: R$ 50</p>
+      <div class="flex gap-5 items-start p-6 bg-bege rounded-2xl">
+        <span class="text-4xl flex-shrink-0">🚫</span>
+        <div>
+          <h3 class="text-xl font-black text-dor mb-1">Fim do hábito de comer cocô</h3>
+          <p class="text-lg text-gray-700">Entenda a causa real da coprofagia e elimine esse comportamento nojento de vez.</p>
         </div>
       </div>
-      <div class="card-hover bg-white rounded-3xl shadow-xl overflow-hidden border-2 border-dourado">
-        <!-- Calendário de Vacinação 2026/2027 -->
-        <img src="https://metodoautocoaching.com/wp-content/uploads/2026/06/410bb128-022f-4096-8b7e-f8ea3aeba7dc-300x300.jpg" alt="Calendário de Vacinação" class="w-full h-56 object-cover">
-        <div class="p-8 relative">
-          <span class="absolute -top-5 right-6 bg-menta text-texto font-black px-4 py-2 rounded-full text-sm shadow-lg">GRÁTIS</span>
-          <h3 class="text-xl font-black text-texto mb-3">📅 Calendário de Vacinação 2026/2027</h3>
-          <p class="text-gray-700">Tudo que seu Shih Tzu precisa em cada fase da vida para prevenir doenças.</p>
-          <p class="text-sm text-gray-400 mt-4 line-through">Valor: R$ 50</p>
+      <div class="flex gap-5 items-start p-6 bg-bege rounded-2xl">
+        <span class="text-4xl flex-shrink-0">🎯</span>
+        <div>
+          <h3 class="text-xl font-black text-dor mb-1">Obediência de verdade</h3>
+          <p class="text-lg text-gray-700">Um cão que atende aos comandos mesmo quando você não está olhando. Chega de ser ignorado.</p>
+        </div>
+      </div>
+      <div class="flex gap-5 items-start p-6 bg-bege rounded-2xl">
+        <span class="text-4xl flex-shrink-0">🍖</span>
+        <div>
+          <h3 class="text-xl font-black text-dor mb-1">Alimentação correta e saudável</h3>
+          <p class="text-lg text-gray-700">O que dar e o que evitar para acabar com cocô mole, mau cheiro e problemas de digestão.</p>
+        </div>
+      </div>
+      <div class="flex gap-5 items-start p-6 bg-bege rounded-2xl">
+        <span class="text-4xl flex-shrink-0">✨</span>
+        <div>
+          <h3 class="text-xl font-black text-dor mb-1">Higiene, pelagem e saúde</h3>
+          <p class="text-lg text-gray-700">Rotina de banho, tosa e prevenção para evitar nós, dermatites e o veterinário todo mês.</p>
+        </div>
+      </div>
+      <div class="flex gap-5 items-start p-6 bg-bege rounded-2xl">
+        <span class="text-4xl flex-shrink-0">🤝</span>
+        <div>
+          <h3 class="text-xl font-black text-dor mb-1">Convívio e socialização</h3>
+          <p class="text-lg text-gray-700">Menos latido, menos ansiedade, mais harmonia. Uma casa em paz e um pet equilibrado.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== BLOCO 6: OFERTA (ÚNICO BOTÃO) ===================== -->
-<section class="py-20 md:py-28 gradient-dor">
-  <div class="max-w-3xl mx-auto px-6">
-    <h2 class="text-3xl md:text-5xl font-black text-center mb-12 text-white leading-tight">
-      Chega de sofrer com os problemas do seu Shih Tzu
-    </h2>
-
-    <div class="bg-white rounded-3xl p-8 md:p-12 shadow-2xl">
-      <div class="text-center mb-6">
-        <p class="text-gray-500 text-lg mb-1">Valor normal do pacote completo:</p>
-        <p class="text-3xl line-through text-gray-400 font-bold">R$ 176,90</p>
+<!-- ============ MOSTRAR O RESULTADO (imagens) ============ -->
+<section class="py-16 md:py-24 bg-gradient-to-b from-white to-bege">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-8 items-center">
+      <img src="https://metodoautocoaching.com/wp-content/uploads/2026/06/0189732b-1947-417e-baf3-2c1c911577c2-300x201.jpg" alt="Shih Tzu feliz e saudável" class="rounded-3xl shadow-2xl w-full h-auto">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-black text-dor mb-4 leading-tight">
+          Do caos à convivência que você sempre quis
+        </h2>
+        <p class="text-lg text-gray-700 mb-4">
+          Sem adestrador caro. Sem produtos milagrosos. Só o passo a passo certo, aplicado em casa, no seu ritmo.
+        </p>
+        <p class="text-lg text-gray-700">
+          Um Shih Tzu limpo, obediente e saudável — e uma casa que você tem orgulho de mostrar pras visitas.
+        </p>
       </div>
+    </div>
+  </div>
+</section>
 
-      <div class="bg-gradient-to-r from-menta to-green-400 rounded-2xl p-8 mb-8 text-center">
-        <p class="text-texto text-xl font-bold mb-1">Hoje você leva por apenas:</p>
-        <p class="text-6xl md:text-7xl font-black text-texto">R$ 29,90</p>
+<!-- ============ BÔNUS ============ -->
+<section class="py-16 md:py-24 bg-bege">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="text-center mb-12">
+      <span class="inline-block bg-dourado text-texto text-sm font-bold px-4 py-2 rounded-full mb-4">DE BRINDE</span>
+      <h2 class="text-3xl md:text-4xl font-black text-dor leading-tight">
+        + 3 Bônus Exclusivos (R$ 147) grátis hoje
+      </h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white rounded-3xl shadow-lg overflow-hidden border-2 border-dourado">
+        <img src="https://metodoautocoaching.com/wp-content/uploads/2026/06/c5948941-edeb-4325-96d4-829b1d11cbb3-300x300.jpg" alt="Guia de Tosa" class="w-full h-52 object-cover">
+        <div class="p-6 relative">
+          <span class="absolute -top-4 right-5 bg-menta text-texto font-black px-3 py-1.5 rounded-full text-sm shadow">GRÁTIS</span>
+          <h3 class="text-lg font-black text-texto mb-2">Guia de Tipos de Tosa</h3>
+          <p class="text-gray-600 text-sm">Tosas higiênicas e estéticas passo a passo, com fotos.</p>
+        </div>
       </div>
+      <div class="bg-white rounded-3xl shadow-lg overflow-hidden border-2 border-dourado">
+        <img src="https://metodoautocoaching.com/wp-content/uploads/2026/06/8db861c4-478d-448c-82c6-8ab5becfffd8-300x300.jpg" alt="Cardápio Natural" class="w-full h-52 object-cover">
+        <div class="p-6 relative">
+          <span class="absolute -top-4 right-5 bg-menta text-texto font-black px-3 py-1.5 rounded-full text-sm shadow">GRÁTIS</span>
+          <h3 class="text-lg font-black text-texto mb-2">Cardápio Natural + Receitas</h3>
+          <p class="text-gray-600 text-sm">Comida natural barata que melhora a digestão do pet.</p>
+        </div>
+      </div>
+      <div class="bg-white rounded-3xl shadow-lg overflow-hidden border-2 border-dourado">
+        <img src="https://metodoautocoaching.com/wp-content/uploads/2026/06/410bb128-022f-4096-8b7e-f8ea3aeba7dc-300x300.jpg" alt="Calendário de Vacinação" class="w-full h-52 object-cover">
+        <div class="p-6 relative">
+          <span class="absolute -top-4 right-5 bg-menta text-texto font-black px-3 py-1.5 rounded-full text-sm shadow">GRÁTIS</span>
+          <h3 class="text-lg font-black text-texto mb-2">Calendário de Vacinação 26/27</h3>
+          <p class="text-gray-600 text-sm">Tudo que seu Shih Tzu precisa em cada fase da vida.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <div class="mb-10">
-        <h3 class="text-xl font-black text-texto mb-5">Você vai receber imediatamente:</h3>
-        <ul class="space-y-4">
-          <li class="flex items-center gap-3"><span class="text-menta text-2xl font-black">✓</span><span class="text-lg">Manual Completo do Shih Tzu (PDF interativo)</span></li>
-          <li class="flex items-center gap-3"><span class="text-menta text-2xl font-black">✓</span><span class="text-lg">Bônus 1 – Guia de Tipos de Tosa</span></li>
-          <li class="flex items-center gap-3"><span class="text-menta text-2xl font-black">✓</span><span class="text-lg">Bônus 2 – Cardápio Natural Semanal</span></li>
-          <li class="flex items-center gap-3"><span class="text-menta text-2xl font-black">✓</span><span class="text-lg">Bônus 3 – Calendário de Vacinação</span></li>
+<!-- ============ OFERTA (martelando forte) ============ -->
+<section class="py-16 md:py-24 gradient-dor">
+  <div class="max-w-2xl mx-auto px-6">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl md:text-5xl font-black text-white leading-tight mb-3">
+        Tudo isso hoje por menos que uma pizza
+      </h2>
+      <p class="text-red-100 text-lg">Acesso imediato e pra sempre. Você aplica hoje mesmo.</p>
+    </div>
+
+    <div class="bg-white rounded-3xl p-8 md:p-10 shadow-2xl">
+      <!-- Recap forte do que recebe -->
+      <div class="bg-bege rounded-2xl p-6 mb-8">
+        <p class="text-center font-black text-dor text-lg mb-4">👇 O QUE ENTRA NO SEU ACESSO HOJE:</p>
+        <ul class="space-y-3">
+          <li class="flex items-center gap-3"><span class="text-menta text-xl font-black">✓</span><span class="font-semibold">Manual Completo do Shih Tzu <span class="text-gray-400">(R$ 176,90)</span></span></li>
+          <li class="flex items-center gap-3"><span class="text-menta text-xl font-black">✓</span><span class="font-semibold">Bônus: Guia de Tipos de Tosa <span class="text-gray-400">(R$ 47)</span></span></li>
+          <li class="flex items-center gap-3"><span class="text-menta text-xl font-black">✓</span><span class="font-semibold">Bônus: Cardápio Natural + Receitas <span class="text-gray-400">(R$ 50)</span></span></li>
+          <li class="flex items-center gap-3"><span class="text-menta text-xl font-black">✓</span><span class="font-semibold">Bônus: Calendário de Vacinação <span class="text-gray-400">(R$ 50)</span></span></li>
         </ul>
+        <div class="border-t border-gray-300 mt-4 pt-4 text-center">
+          <p class="text-gray-500">Valor real: <span class="line-through font-bold">R$ 323,90</span></p>
+        </div>
       </div>
 
-      <a href="https://pay.hotmart.com/G106090646I?checkoutMode=10" class="btn-cta block bg-dor text-white font-black text-xl md:text-2xl px-8 py-6 rounded-2xl text-center w-full">
-        🐾 QUERO O MANUAL AGORA
+      <!-- Preço martelado -->
+      <div class="text-center mb-8">
+        <p class="text-gray-600 font-semibold mb-1">Hoje você leva tudo por apenas:</p>
+        <div class="bg-gradient-to-r from-menta to-green-400 rounded-2xl py-6 px-4">
+          <p class="text-6xl md:text-7xl font-black text-texto leading-none">R$ 29,90</p>
+          <p class="text-texto font-bold mt-2">à vista ou parcelado no cartão</p>
+        </div>
+      </div>
+
+      <a href="https://pay.hotmart.com/G106090646I?checkoutMode=10" class="btn-cta pulse block bg-dor text-white font-black text-xl md:text-2xl px-8 py-6 rounded-2xl text-center w-full">
+        🐾 QUERO TUDO ISSO AGORA
       </a>
 
-      <div class="flex flex-col md:flex-row justify-center gap-5 mt-8 text-gray-600 font-semibold text-center">
-        <span>🔒 Pagamento Seguro</span>
-        <span>⚡ Acesso Imediato</span>
-        <span>🛡️ Garantia 7 Dias</span>
+      <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-6 text-gray-600 font-semibold text-sm">
+        <span>🔒 Compra segura</span>
+        <span>⚡ Acesso na hora</span>
+        <span>🛡️ 7 dias de garantia</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== BLOCO 7: GARANTIA ===================== -->
-<section class="py-20 md:py-28 bg-white">
-  <div class="max-w-3xl mx-auto px-6">
-    <div class="bg-gradient-to-b from-menta to-green-100 rounded-3xl p-10 md:p-14 text-center shadow-xl">
-      <div class="text-7xl mb-6">🛡️</div>
-      <h2 class="text-3xl md:text-4xl font-black text-texto mb-6">
-        Garantia Incondicional de 7 Dias – Risco Zero
-      </h2>
-      <p class="text-lg md:text-xl text-gray-800 leading-relaxed">
-        Teste o manual por 7 dias inteiros. Se seu Shih Tzu continuar fazendo xixi fora do lugar, comendo cocô ou desobedecendo, é só pedir seu dinheiro de volta. <strong>100% reembolsado. Sem perguntas.</strong>
+<!-- ============ GARANTIA ============ -->
+<section class="py-16 md:py-20 bg-white">
+  <div class="max-w-2xl mx-auto px-6">
+    <div class="bg-gradient-to-b from-menta to-green-100 rounded-3xl p-10 text-center shadow-xl">
+      <div class="text-6xl mb-4">🛡️</div>
+      <h2 class="text-2xl md:text-3xl font-black text-texto mb-4">Garantia de 7 dias — Risco zero</h2>
+      <p class="text-lg text-gray-800 leading-relaxed">
+        Teste o manual por 7 dias. Se não gostar, é só pedir seu dinheiro de volta. <strong>100% reembolsado, sem perguntas.</strong>
       </p>
     </div>
   </div>
 </section>
 
-<!-- ===================== BLOCO 8: FAQ ===================== -->
-<section class="py-20 md:py-28 bg-bege">
-  <div class="max-w-4xl mx-auto px-6">
-    <h2 class="text-3xl md:text-5xl font-black text-center mb-16 text-dor">
-      Perguntas Frequentes
-    </h2>
-    <div class="space-y-4" id="faq">
-      <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-        <button class="faq-btn w-full p-6 text-left font-black text-lg flex justify-between items-center gap-4">
-          <span>Funciona para Shih Tzu filhote ou adulto?</span><span class="faq-icon text-3xl text-dor flex-shrink-0">+</span>
-        </button>
-        <div class="faq-content"><p class="px-6 pb-6 text-gray-700 text-lg">Sim! O manual funciona com Shih Tzus de qualquer idade. As técnicas são adaptadas tanto para filhotes quanto para cães adultos. Nunca é tarde para transformar o comportamento do seu pet.</p></div>
+<!-- ============ FAQ ============ -->
+<section class="py-16 md:py-20 bg-bege">
+  <div class="max-w-3xl mx-auto px-6">
+    <h2 class="text-3xl md:text-4xl font-black text-center mb-10 text-dor">Perguntas Frequentes</h2>
+    <div class="space-y-3">
+      <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+        <button class="faq-btn w-full p-5 text-left font-black flex justify-between items-center gap-4"><span>Funciona para filhote ou adulto?</span><span class="faq-icon text-2xl text-dor flex-shrink-0">+</span></button>
+        <div class="faq-content"><p class="px-5 pb-5 text-gray-700">Sim, funciona com Shih Tzus de qualquer idade. As técnicas são adaptadas tanto para filhotes quanto para adultos.</p></div>
       </div>
-      <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-        <button class="faq-btn w-full p-6 text-left font-black text-lg flex justify-between items-center gap-4">
-          <span>Quanto tempo demora para ver resultado?</span><span class="faq-icon text-3xl text-dor flex-shrink-0">+</span>
-        </button>
-        <div class="faq-content"><p class="px-6 pb-6 text-gray-700 text-lg">Muitos tutores relatam primeiros resultados em 2 a 3 semanas. Para hábitos mais enraizados, como coprofagia, pode levar de 4 a 6 semanas com aplicação consistente. O segredo é seguir o passo a passo exatamente como está no manual.</p></div>
+      <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+        <button class="faq-btn w-full p-5 text-left font-black flex justify-between items-center gap-4"><span>Quanto tempo pra ver resultado?</span><span class="faq-icon text-2xl text-dor flex-shrink-0">+</span></button>
+        <div class="faq-content"><p class="px-5 pb-5 text-gray-700">Muitos tutores veem os primeiros resultados em 2 a 3 semanas. Hábitos mais enraizados podem levar de 4 a 6 semanas com aplicação consistente.</p></div>
       </div>
-      <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-        <button class="faq-btn w-full p-6 text-left font-black text-lg flex justify-between items-center gap-4">
-          <span>O material é em vídeo ou PDF?</span><span class="faq-icon text-3xl text-dor flex-shrink-0">+</span>
-        </button>
-        <div class="faq-content"><p class="px-6 pb-6 text-gray-700 text-lg">É um PDF interativo, com imagens, tabelas e ilustrações em alta qualidade. Funciona em qualquer dispositivo (celular, tablet ou computador). Você pode ler online ou baixar para ler offline e até imprimir.</p></div>
+      <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+        <button class="faq-btn w-full p-5 text-left font-black flex justify-between items-center gap-4"><span>É vídeo ou PDF?</span><span class="faq-icon text-2xl text-dor flex-shrink-0">+</span></button>
+        <div class="faq-content"><p class="px-5 pb-5 text-gray-700">É um PDF interativo com imagens e ilustrações. Funciona em celular, tablet ou computador, online ou offline.</p></div>
       </div>
-      <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-        <button class="faq-btn w-full p-6 text-left font-black text-lg flex justify-between items-center gap-4">
-          <span>Como recebo o acesso?</span><span class="faq-icon text-3xl text-dor flex-shrink-0">+</span>
-        </button>
-        <div class="faq-content"><p class="px-6 pb-6 text-gray-700 text-lg">Logo após a compra você recebe um e-mail com o link de acesso. Para cartão e Pix, o acesso é imediato (em até 10 minutos). Para boleto, em até 1 dia útil após a confirmação do pagamento.</p></div>
+      <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+        <button class="faq-btn w-full p-5 text-left font-black flex justify-between items-center gap-4"><span>Como recebo o acesso?</span><span class="faq-icon text-2xl text-dor flex-shrink-0">+</span></button>
+        <div class="faq-content"><p class="px-5 pb-5 text-gray-700">Por e-mail, logo após a compra. No cartão e Pix o acesso é imediato; no boleto, em até 1 dia útil.</p></div>
       </div>
-      <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-        <button class="faq-btn w-full p-6 text-left font-black text-lg flex justify-between items-center gap-4">
-          <span>Aceita parcelamento?</span><span class="faq-icon text-3xl text-dor flex-shrink-0">+</span>
-        </button>
-        <div class="faq-content"><p class="px-6 pb-6 text-gray-700 text-lg">Sim! Você pode parcelar no cartão de crédito. Também aceitamos Pix e boleto bancário. Escolha a forma de pagamento mais conveniente no checkout.</p></div>
-      </div>
-      <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-        <button class="faq-btn w-full p-6 text-left font-black text-lg flex justify-between items-center gap-4">
-          <span>Tem suporte?</span><span class="faq-icon text-3xl text-dor flex-shrink-0">+</span>
-        </button>
-        <div class="faq-content"><p class="px-6 pb-6 text-gray-700 text-lg">Sim! Você conta com suporte por e-mail. Qualquer dúvida sobre as técnicas ou dificuldade na aplicação, é só entrar em contato. Estamos aqui para garantir que você tenha sucesso com seu Shih Tzu.</p></div>
-      </div>
-      <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-        <button class="faq-btn w-full p-6 text-left font-black text-lg flex justify-between items-center gap-4">
-          <span>Como funciona a garantia?</span><span class="faq-icon text-3xl text-dor flex-shrink-0">+</span>
-        </button>
-        <div class="faq-content"><p class="px-6 pb-6 text-gray-700 text-lg">Você tem 7 dias completos para testar. Se não ficar satisfeito por qualquer motivo, basta enviar um e-mail solicitando reembolso. Devolvemos 100% do valor, sem perguntas e sem burocracia.</p></div>
+      <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+        <button class="faq-btn w-full p-5 text-left font-black flex justify-between items-center gap-4"><span>Como funciona a garantia?</span><span class="faq-icon text-2xl text-dor flex-shrink-0">+</span></button>
+        <div class="faq-content"><p class="px-5 pb-5 text-gray-700">Você tem 7 dias pra testar. Se não gostar, basta pedir reembolso por e-mail e devolvemos 100% do valor, sem burocracia.</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== CTA FINAL (sem botão, só reforço) ===================== -->
-<section class="py-20 md:py-28 bg-gradient-to-r from-menta via-green-400 to-menta">
-  <div class="max-w-4xl mx-auto px-6 text-center">
-    <h2 class="text-3xl md:text-5xl font-black text-texto mb-6 leading-tight">
-      Está pronto para resolver isso de uma vez por todas?
-    </h2>
-    <p class="text-xl text-gray-800 mb-10 font-semibold">
-      Milhares de tutores já transformaram a vida dos seus Shih Tzus. Agora é a sua vez.
-    </p>
-    <div class="flex flex-col md:flex-row justify-center gap-6 text-texto font-bold text-lg">
-      <span>✓ Acesso Imediato</span>
-      <span>✓ Garantia 7 Dias</span>
-      <span>✓ 3 Bônus Grátis</span>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== RODAPÉ ===================== -->
-<footer class="bg-texto text-white py-10 text-center">
+<!-- ============ RODAPÉ ============ -->
+<footer class="bg-texto text-white py-8 text-center">
   <p class="text-sm">© 2026 Manual Completo do Shih Tzu. Todos os direitos reservados.</p>
-  <p class="text-xs text-gray-400 mt-2">Plataforma: Hotmart · Garantia incondicional de 7 dias</p>
+  <p class="text-xs text-gray-400 mt-2">Plataforma: Hotmart · Garantia de 7 dias</p>
 </footer>
 
 <script>
-  // FAQ acordeão
   document.querySelectorAll('.faq-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const content = btn.nextElementSibling;
       const icon = btn.querySelector('.faq-icon');
       const isOpen = content.classList.contains('open');
-      // fecha todos
       document.querySelectorAll('.faq-content').forEach(c => c.classList.remove('open'));
       document.querySelectorAll('.faq-icon').forEach(i => i.classList.remove('open'));
-      // abre o clicado (se estava fechado)
       if (!isOpen) { content.classList.add('open'); icon.classList.add('open'); }
     });
   });
